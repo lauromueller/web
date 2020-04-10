@@ -22,7 +22,7 @@
     "@ant-design/icons": "4.0.6",
     "@mdx-js/mdx": "1.5.8",
     "@mdx-js/react": "1.5.8",
-    "gatsby": "2.20.15",
+    "gatsby": "2.20.16",
     "gatsby-plugin-mdx": "1.1.6",
     "gatsby-plugin-react-svg": "3.0.0",
     "gatsby-plugin-sass": "2.2.1",
