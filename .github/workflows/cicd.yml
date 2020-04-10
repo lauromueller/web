@@ -1,0 +1,20 @@
+name: ci-cd
+
+on: push
+
+jobs:
+  web:
+    name: web
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install packages
+        run: yarn
+      - name: Test
+        working-directory: packages/web
+        run: |
+          yarn tsc:check
+          yarn prettier
+          yarn lint
+          yarn lint:css
+          yarn build
