@@ -11,7 +11,6 @@ jobs:
       - name: Install packages
         run: yarn
       - name: Test
-        working-directory: packages/web
         run: |
           yarn tsc:check
           yarn prettier
