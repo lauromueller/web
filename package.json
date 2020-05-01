@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "@lauromueller/ui": "^1.0.1",
-    "@mdx-js/mdx": "1.6.0",
-    "@mdx-js/react": "1.6.0",
+    "@mdx-js/mdx": "1.6.1",
+    "@mdx-js/react": "1.6.1",
     "gatsby": "2.21.9",
     "gatsby-plugin-mdx": "1.2.4",
     "gatsby-plugin-react-svg": "3.0.0",
