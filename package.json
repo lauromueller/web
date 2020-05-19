@@ -22,7 +22,7 @@
     "@lauromueller/ui": "^1.0.1",
     "@mdx-js/mdx": "1.6.1",
     "@mdx-js/react": "1.6.1",
-    "gatsby": "2.21.37",
+    "gatsby": "2.21.39",
     "gatsby-plugin-mdx": "1.2.8",
     "gatsby-plugin-react-svg": "3.0.0",
     "gatsby-plugin-sass": "2.3.1",
