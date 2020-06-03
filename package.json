@@ -35,7 +35,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "styled-components": "5.1.0",
-    "swiper": "5.4.1",
+    "swiper": "5.4.2",
     "typescript": "3.9.3"
   },
   "devDependencies": {
