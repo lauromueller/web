@@ -19,7 +19,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@lauromueller/ui": "^1.0.1",
     "@mdx-js/mdx": "1.6.6",
     "@mdx-js/react": "1.6.6",
     "gatsby": "2.23.11",

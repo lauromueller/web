@@ -1,11 +1,14 @@
 import React, { FunctionComponent } from 'react';
-import { Button } from '@lauromueller/ui';
 import { BasicPage } from '../layout';
+import { CategoryButtons, FeaturedText } from '../components/pages/home';
 
 const Index: FunctionComponent = () => {
   return (
     <BasicPage>
-      <Button>Test</Button>
+      <FeaturedText>
+        On Software Engineering, Artificial Intelligence, and Business
+      </FeaturedText>
+      <CategoryButtons />
     </BasicPage>
   );
 };

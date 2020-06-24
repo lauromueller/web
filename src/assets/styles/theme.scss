@@ -1,0 +1,84 @@
+:root {
+  --lm-color-primary: #07689f;
+  --lm-color-primary-rgb: 7,104,159;
+  --lm-color-primary-contrast: #ffffff;
+  --lm-color-primary-contrast-rgb: 255,255,255;
+  --lm-color-primary-shade: #065c8c;
+  --lm-color-primary-tint: #2077a9;
+  --lm-color-primary-light: #EEF6FC;
+
+  --lm-color-secondary: #edf6fc;
+  --lm-color-secondary-rgb: 237,246,252;
+  --lm-color-secondary-contrast: #333333;
+  --lm-color-secondary-contrast-rgb: 51,51,51;
+  --lm-color-secondary-shade: #d1d8de;
+  --lm-color-secondary-tint: #eff7fc;
+
+  --lm-color-tertiary: #f9441c;
+  --lm-color-tertiary-rgb: 249,68,28;
+  --lm-color-tertiary-contrast: #ffffff;
+  --lm-color-tertiary-contrast-rgb: 255,255,255;
+  --lm-color-tertiary-shade: #db3c19;
+  --lm-color-tertiary-tint: #fa5733;
+
+  --lm-color-success: #61d4b3;
+  --lm-color-success-rgb: 97,212,179;
+  --lm-color-success-contrast: #ffffff;
+  --lm-color-success-contrast-rgb: 51,51,51;
+  --lm-color-success-shade: #55bb9e;
+  --lm-color-success-tint: #71d8bb;
+
+  --lm-color-warning: #fdd365;
+  --lm-color-warning-rgb: 253,211,101;
+  --lm-color-warning-contrast: #333333;
+  --lm-color-warning-contrast-rgb: 51,51,51;
+  --lm-color-warning-shade: #dfba59;
+  --lm-color-warning-tint: #fdd774;
+
+  --lm-color-danger: #fd5e53;
+  --lm-color-danger-rgb: 253,94,83;
+  --lm-color-danger-contrast: #ffffff;
+  --lm-color-danger-contrast-rgb: 255,255,255;
+  --lm-color-danger-shade: #df5349;
+  --lm-color-danger-tint: #fd6e64;
+
+  --lm-color-dark: #333333;
+  --lm-color-dark-rgb: 51,51,51;
+  --lm-color-dark-contrast: #ffffff;
+  --lm-color-dark-contrast-rgb: 255,255,255;
+  --lm-color-dark-shade: #2d2d2d;
+  --lm-color-dark-tint: #474747;
+
+  --lm-color-medium: #989aa2;
+  --lm-color-medium-rgb: 152,154,162;
+  --lm-color-medium-contrast: #ffffff;
+  --lm-color-medium-contrast-rgb: 255,255,255;
+  --lm-color-medium-shade: #86888f;
+  --lm-color-medium-tint: #a2a4ab;
+
+  --lm-color-light: #f4f5f8;
+  --lm-color-light-rgb: 244,244,244;
+  --lm-color-light-contrast: #333333;
+  --lm-color-light-contrast-rgb: 51,51,51;
+  --lm-color-light-shade: #d7d8da;
+  --lm-color-light-tint: #f5f6f9;
+
+  --lm-color-purple: #743AD5;
+  --lm-color-purple-rgb: 116,58,213;
+  --lm-color-purple-contrast: #ffffff;
+  --lm-color-purple-contrast-rgb: 255,255,255;
+  --lm-color-purple-shade: #6633bb;
+  --lm-color-purple-tint: #824ed9;
+
+  --border-radius-default: 8px;
+  --border-radius-half: 4px;
+  --border-radius-double: 8px;
+
+  --padding-default: 8px;
+  --padding-half: 4px;
+  --padding-double: 16px;
+
+  --margin-default: 8px;
+  --margin-half: 4px;
+  --margin-double: 16px;
+}
