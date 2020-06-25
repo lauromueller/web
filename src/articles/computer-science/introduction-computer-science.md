@@ -1,6 +1,7 @@
 ---
 title: 'Introduction to Algorithms and Data Structures in Java'
 date: '2020-01-10'
+slug: 'the-first-post'
 categories: 'computer science, java'
 ---
 
@@ -41,5 +42,25 @@ keep in mind:
 Looking at
 
 ### Coding
+
+The design step is one of the most important phases of object-oriented programming.
+Here we dedicate time and effort to dividing our program into classes, defining
+both the information and methods that will be stored in each class, as well as
+how each class will interact with each other. While this is highly dependent on
+the program being implemented, there are a couple of general principles we can
+keep in mind:
+
+```jsx
+const testFunction = () => {
+    return null;
+}
+```
+The design step is one of the most important phases of object-oriented programming.
+Here we dedicate time and effort to dividing our program into classes, defining
+both the information and methods that will be stored in each class, as well as
+how each class will interact with each other. While this is highly dependent on
+the program being implemented, there are a couple of general principles we can
+keep in mind:
+
 
 ### Testing

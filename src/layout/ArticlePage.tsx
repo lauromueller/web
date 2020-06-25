@@ -1,65 +1,48 @@
 import React, { FunctionComponent } from 'react';
 import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
 import { BasicPage } from '.';
 
-declare interface ArticlePageProps {
-  data: {
-    mdx: {
-      body: string;
-      frontmatter: {
-        title: string;
-      };
-    };
-  };
-}
-
-const StyledContent = styled.div`
-  max-width: 700px;
-  margin: auto;
+const StyledContentWrapper = styled.div`
+  margin: 80px auto;
 
   p,
-  span,
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    margin: 0 10% 1.5em;
-    color: #333;
+    padding: 0 1.7rem;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'Helvetica Neue', sans-serif;
-  }
-
-  p,
-  span {
-    font-family: 'Palatino', serif;
-    font-size: 1.2em;
-  }
-
-  img {
-    margin: 0 2.5%;
+  @media (max-width: 768px) {
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      padding: 0;
+    }
+    margin: 16px auto;
   }
 `;
 
-const ArticlePage: FunctionComponent<ArticlePageProps> = ({
-  data: { mdx },
-}) => {
+const ArticlePage: FunctionComponent<any> = ({ data }) => {
+  const { markdownRemark } = data; // data.markdownRemark holds your post data
+  const { frontmatter, html } = markdownRemark;
+
   return (
     <BasicPage>
-      <StyledContent>
-        <h1 style={{ textAlign: `center` }}>{mdx.frontmatter.title}</h1>
-        <MDXRenderer>{mdx.body}</MDXRenderer>
-      </StyledContent>
+      <StyledContentWrapper>
+        <h1>{frontmatter.title}</h1>
+        <div
+          className="blog-post-content"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      </StyledContentWrapper>
     </BasicPage>
   );
 };
@@ -67,11 +50,12 @@ const ArticlePage: FunctionComponent<ArticlePageProps> = ({
 export default ArticlePage;
 
 export const pageQuery = graphql`
-  query BlogPostQuery($id: String) {
-    mdx(id: { eq: $id }) {
-      id
-      body
+  query($slug: String!) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      html
       frontmatter {
+        date(formatString: "MMMM DD, YYYY")
+        slug
         title
       }
     }

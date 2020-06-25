@@ -1,0 +1,28 @@
+/**
+ * If you only want to use line numbering
+ */
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #000000 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.7rem !important;
+}
+
+.gatsby-highlight {
+  background-color: #000000;
+  border-radius: 8px;
+  padding: 0 0.5rem;
+  overflow: auto;
+  margin: 32px 0;
+}
+
+/*
+
+.gatsby-highlight pre[class*="language-"].line-numbers {
+  padding: 0;
+  padding-left: 2.8em;
+  overflow: initial;
+}
+
+ */

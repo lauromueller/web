@@ -6,7 +6,7 @@ const outlinedStyle = css`
   font-weight: 700;
   border: 0;
   border-radius: 50px;
-  padding: 8px 20px;
+  padding: 8px 16px;
   margin: 0 4px;
   background-color: transparent;
   color: var(--lm-color-primary);
