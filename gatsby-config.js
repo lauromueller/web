@@ -18,8 +18,9 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-remark-prismjs`,
-        ]
-      }
+          `gatsby-remark-reading-time`
+        ],
+      },
     },
     `gatsby-plugin-sass`,
     {

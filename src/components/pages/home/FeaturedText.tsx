@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 
-const StyledFeaturedText = styled.h3`
+const StyledFeaturedText = styled.h1`
   font-weight: 700;
   margin: 80px 0 12px 0;
 

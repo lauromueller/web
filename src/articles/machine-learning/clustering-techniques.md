@@ -1,9 +1,10 @@
 ---
-title: 'Introduction to Algorithms and Data Structures in Java'
+title: 'Clustering techniques: an overview'
 date: '2020-01-10'
-slug: 'the-first-post'
-categories: 'computer science, java'
-level: 'beginner'
+slug: 'clustering-techniques-overview'
+categories: 'clustering, data preparation, data understanding'
+draft: 'true'
+level: 'intermediate'
 ---
 
 Welcome to the first article in a series of posts that will take a deep dive

@@ -1,8 +1,8 @@
 ---
-title: 'Introduction to Algorithms and Data Structures in Java'
+title: 'Data preprocessing: an introduction'
 date: '2020-01-10'
-slug: 'the-first-post'
-categories: 'computer science, java'
+slug: 'data-preprocessing-introduction'
+categories: 'clustering, data preparation, data understanding'
 level: 'beginner'
 ---
 

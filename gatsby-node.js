@@ -37,7 +37,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: path.resolve(`./src/layout/ArticlePage.tsx`),
       // You can use the values in this context in
       // our page layout component
-      context: { slug: node.frontmatter.slug, },
+      context: { slug: node.frontmatter.slug },
     });
   });
 };
