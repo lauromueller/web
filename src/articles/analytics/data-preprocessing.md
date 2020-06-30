@@ -1,9 +1,11 @@
 ---
-title: 'Subspace search: identifying interesting dimensions in high dimensional datasets'
+title: 'Data preprocessing: an introduction'
 date: '2020-01-10'
-slug: 'subspace-search'
-categories: 'clustering, data preparation, data understanding'
-level: intermediate
+slug: 'data-preprocessing-introduction'
+field: analytics
+area: data-preparation
+category: 'data analysis'
+tags: 'data preprocessing, machine learning'
 ---
 
 Welcome to the first article in a series of posts that will take a deep dive
@@ -51,8 +53,10 @@ how each class will interact with each other. While this is highly dependent on
 the program being implemented, there are a couple of general principles we can
 keep in mind:
 
-```python
-variableName = pd.readCsv();
+```jsx
+const testFunction = () => {
+  return null;
+};
 ```
 
 The design step is one of the most important phases of object-oriented programming.

@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=PT+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;500;700&family=PT+Sans:wght@400;500;700&display=swap');
 
 html {
-  font-family: 'Lora', serif;
+  font-family: 'PT Serif', serif;
   font-size: 16px;
+  color: var(--lm-color-dark);
 }
 
 button {
@@ -78,6 +79,41 @@ sub {
   bottom: -0.25rem;
 }
 
-p {
-  line-height: 1.7rem;
+p,
+blockquote {
+  line-height: 1.85rem;
+  font-size: 1.15rem;
+}
+
+blockquote {
+  border-left: 8px solid var(--lm-color-tertiary);
+  padding: 0 1.2rem;
+  margin: 1.7rem;
+
+  @media (max-width: 768px) {
+    padding: 0 1.2rem;
+    margin: 1.7rem 0;
+  }
+}
+
+.dropcap :not(li) {
+  color: var(--lm-color-dark);
+  font-family: 'PT Sans', sans-serif;
+  float: left;
+  font-weight: 700;
+  font-size: 3.5rem;
+  line-height: 2.6rem;
+  margin: 0;
+  padding: 0.75rem 0.5rem 0 0;
+}
+
+/* hide visually from eyes, but not aurally from screen readers */
+.invisible {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  white-space: nowrap;
+  width: 1px;
 }

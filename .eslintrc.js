@@ -19,6 +19,7 @@ module.exports = {
   },
   rules: {
     quotes: 'off',
+    'jsx-a11y/accessible-emoji': 'off',
     '@typescript-eslint/quotes': 'off',
     indent: ['error', 2, { SwitchCase: 1 }],
     'import/extensions': 'off',

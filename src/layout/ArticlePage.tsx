@@ -50,8 +50,14 @@ const ArticlePage: FunctionComponent<any> = ({ data }) => {
 export default ArticlePage;
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+  query($slug: String!, $area: String!, $field: String) {
+    markdownRemark(
+      frontmatter: {
+        slug: { eq: $slug }
+        area: { eq: $area }
+        field: { eq: $field }
+      }
+    ) {
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")

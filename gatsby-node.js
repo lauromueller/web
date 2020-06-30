@@ -11,11 +11,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       allMarkdownRemark(
         sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
+        filter: { frontmatter: { draft: { ne: true } } }
       ) {
         edges {
           node {
             frontmatter {
               slug
+              area
+              field
             }
           }
         }
@@ -27,17 +30,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
   // Create blog post pages.
   const posts = result.data.allMarkdownRemark.edges;
+
   // you'll call `createPage` for each result
   posts.forEach(({ node }, index) => {
+    const { area, field, slug } = node.frontmatter;
     createPage({
       // This is the slug you created before
       // (or `node.frontmatter.slug`)
-      path: node.frontmatter.slug,
+      path: `${field}/${area}/${slug}`,
       // This component will wrap our MDX content
       component: path.resolve(`./src/layout/ArticlePage.tsx`),
       // You can use the values in this context in
       // our page layout component
-      context: { slug: node.frontmatter.slug },
+      context: { field, area, slug },
     });
   });
 };

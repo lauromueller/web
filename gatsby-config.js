@@ -10,7 +10,6 @@ module.exports = {
     exampleUrl: `https://github.com/gatsbyjs/gatsby/tree/master/examples/using-typescript`,
   },
   plugins: [
-    `gatsby-plugin-mdx`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
     {
@@ -18,7 +17,8 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-remark-prismjs`,
-          `gatsby-remark-reading-time`
+          `gatsby-remark-reading-time`,
+          `gatsby-remark-dropcap`,
         ],
       },
     },

@@ -9,10 +9,11 @@ export type Article = {
   frontmatter: {
     date: string;
     slug: string;
+    field: string;
+    area: string;
     title: string;
-    level: string;
-    categories: string;
-    draft: string;
+    category: string;
+    tags: string;
   };
   fields: {
     readingTime: {
@@ -41,17 +42,22 @@ const StyledArticleListWrapper = styled.div`
 
 const articlesQuery = graphql`
   query {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { draft: { ne: true } } }
+    ) {
       edges {
         node {
           id
-          excerpt(pruneLength: 250)
+          excerpt(format: HTML, pruneLength: 300)
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
+            field
+            area
             slug
             title
-            level
-            categories
+            tags
+            category
           }
           fields {
             readingTime {
@@ -69,9 +75,9 @@ const ArticleList: FunctionComponent = () => {
     allMarkdownRemark: { edges },
   } = useStaticQuery<ArticleList>(articlesQuery);
 
-  const Articles = edges
-    .filter(edge => !edge.node.frontmatter.draft)
-    .map(edge => <ArticleLink key={edge.node.id} article={edge.node} />);
+  const Articles = edges.map(edge => (
+    <ArticleLink key={edge.node.id} article={edge.node} />
+  ));
 
   return <StyledArticleListWrapper>{Articles}</StyledArticleListWrapper>;
 };

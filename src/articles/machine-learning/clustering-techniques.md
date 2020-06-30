@@ -2,9 +2,10 @@
 title: 'Clustering techniques: an overview'
 date: '2020-01-10'
 slug: 'clustering-techniques-overview'
-categories: 'clustering, data preparation, data understanding'
-draft: 'true'
-level: 'intermediate'
+field: machine-learning
+area: clustering
+category: 'machine learning'
+tags: 'clustering'
 ---
 
 Welcome to the first article in a series of posts that will take a deep dive

@@ -3,10 +3,11 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { TagButton } from '../../ui/buttons';
 import { Article } from './ArticleList';
+import { parseArticleUrl } from '../../../utils';
 
 const StyledLinkWrapper = styled.div`
   padding: 40px 0 24px 0;
-  border-bottom: 1px solid var(--lm-color-primary-light);
+  border-bottom: 1px solid var(--lm-color-light);
   display: inline-block;
 
   @media (max-width: 768px) {
@@ -27,12 +28,20 @@ const StyledIndicatorsWrapper = styled.div`
 `;
 
 const StyledIndicator = styled.div`
-  margin-right: 12px;
+  margin-right: 16px;
 `;
 
 const StyledExcerpt = styled.p`
   margin-top: 0.67rem;
   margin-bottom: 0;
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+`;
+
+const StyledIcon = styled(props => <span {...props} />)`
+  margin-right: 4px;
 `;
 
 export type ArticleLinkProps = {
@@ -40,37 +49,37 @@ export type ArticleLinkProps = {
 };
 
 const ArticleLink: FunctionComponent<ArticleLinkProps> = ({ article }) => {
-  const categories = article.frontmatter.categories
-    .split(',')
-    .map(str => str.trim());
+  const tags = article.frontmatter.tags.split(',').map(str => str.trim());
+
+  const { field, area, slug } = article.frontmatter;
 
   return (
     <StyledLinkWrapper>
-      <Link to={article.frontmatter.slug}>
+      <Link to={`${field}/${area}/${slug}`}>
         <h3>{article.frontmatter.title}</h3>
       </Link>
       <StyledIndicatorsWrapper>
         <StyledIndicator>
           <p>
-            <span role="img" aria-label="calendar">
+            <StyledIcon role="img" aria-label="calendar">
               📅
-            </span>
+            </StyledIcon>
             {article.frontmatter.date}
           </p>
         </StyledIndicator>
         <StyledIndicator>
           <p>
-            <span role="img" aria-label="clock">
+            <StyledIcon role="img" aria-label="clock">
               ⏱
-            </span>
+            </StyledIcon>
             {article.fields.readingTime.text}
           </p>
         </StyledIndicator>
       </StyledIndicatorsWrapper>
-      <StyledExcerpt>{article.excerpt}</StyledExcerpt>
+      <StyledExcerpt dangerouslySetInnerHTML={{ __html: article.excerpt }} />
       <div>
-        {categories.map(category => (
-          <TagButton>{category}</TagButton>
+        {tags.map(tag => (
+          <TagButton>{tag}</TagButton>
         ))}
       </div>
     </StyledLinkWrapper>
