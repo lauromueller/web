@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { TagButton } from '../../ui/buttons';
 import { Article } from './ArticleList';
-import { parseArticleUrl } from '../../../utils';
 
 const StyledLinkWrapper = styled.div`
   padding: 40px 0 24px 0;

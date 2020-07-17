@@ -18,8 +18,6 @@ module.exports = {
       options: {
         extensions: [`.md`, `.mdx`],
         gatsbyRemarkPlugins: [
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-reading-time`,
           `gatsby-remark-dropcap`,
           {
             resolve: `gatsby-remark-images`,
@@ -39,6 +37,13 @@ module.exports = {
       options: {
         name: `articles`,
         path: `${__dirname}/src/articles`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `glossary`,
+        path: `${__dirname}/src/glossary`,
       },
     },
     {

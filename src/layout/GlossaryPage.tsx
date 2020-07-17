@@ -1,10 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import { BasicPage } from '.';
-import { GlossaryTooltip } from '../components/articles';
 
 const StyledContentWrapper = styled.div`
   margin: 80px auto;
@@ -34,7 +32,7 @@ const StyledContentWrapper = styled.div`
   }
 `;
 
-const ArticlePage: FunctionComponent<any> = ({ data }) => {
+const GlossaryPage: FunctionComponent<any> = ({ data }) => {
   const { mdx } = data; // data.mdx holds your post data
   const { frontmatter, body } = mdx;
 
@@ -45,35 +43,22 @@ const ArticlePage: FunctionComponent<any> = ({ data }) => {
       <StyledContentWrapper>
         <h1>{frontmatter.title}</h1>
         <div className="blog-post-content">
-          <MDXProvider components={{ GlossaryTooltip }}>
-            <MDXRenderer>{body}</MDXRenderer>
-          </MDXProvider>
+          <MDXRenderer>{body}</MDXRenderer>
         </div>
       </StyledContentWrapper>
     </BasicPage>
   );
 };
 
-export default ArticlePage;
+export default GlossaryPage;
 
 export const pageQuery = graphql`
-  query($slug: String!, $area: String!, $field: String) {
-    mdx(
-      frontmatter: {
-        slug: { eq: $slug }
-        area: { eq: $area }
-        field: { eq: $field }
-      }
-    ) {
+  query($slug: String!) {
+    mdx(frontmatter: { slug: { eq: $slug } }) {
       body
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
         slug
         title
-        authors {
-          firstname
-          lastname
-        }
       }
     }
   }

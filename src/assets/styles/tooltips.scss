@@ -1,0 +1,12 @@
+.glossary-tooltip {
+  opacity: 0.98 !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--lm-color-secondary) !important;
+  box-shadow: 0 0 2px 0 rgba(240,240,240,1) !important;
+
+  &.place-top {
+    &:after {
+      border: 0 solid #2c9448 !important;
+    }
+  }
+}

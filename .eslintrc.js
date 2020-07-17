@@ -21,6 +21,7 @@ module.exports = {
     quotes: 'off',
     'jsx-a11y/accessible-emoji': 'off',
     '@typescript-eslint/quotes': 'off',
+    'import/prefer-default-export': 'off',
     indent: ['error', 2, { SwitchCase: 1 }],
     'import/extensions': 'off',
     'import/no-extraneous-dependencies': [

@@ -14,12 +14,15 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 exports.createPages = async ({ graphql, actions, reporter }) => {
   // Destructure the createPage function from the actions object
   const { createPage } = actions;
-  const result = await graphql(`
+  const articles = await graphql(`
     {
       allMdx(
         sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
-        filter: { frontmatter: { draft: { ne: true } } }
+        filter: {
+          frontmatter: { draft: { ne: true } }
+          fileAbsolutePath: { regex: "/(articles)/.*(mdx?)$/" }
+        }
       ) {
         edges {
           node {
@@ -33,11 +36,34 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     }
   `);
-  if (result.errors) {
+  if (articles.errors) {
     reporter.panicOnBuild(`🚨  ERROR: Loading "createPages" query`);
   }
+
+  const glossary = await graphql(`
+    {
+      allMdx(
+        limit: 1000
+        filter: { fileAbsolutePath: { regex: "/(glossary)/.*(mdx?)$/" } }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  if (glossary.errors) {
+    reporter.panicOnBuild(`🚨  ERROR: Loading "createPages" query`);
+  }
+
   // Create blog post pages.
-  const posts = result.data.allMdx.edges;
+  const posts = articles.data.allMdx.edges;
+  const terms = glossary.data.allMdx.edges;
 
   // you'll call `createPage` for each result
   posts.forEach(({ node }, index) => {
@@ -51,6 +77,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       // You can use the values in this context in
       // our page layout component
       context: { field, area, slug },
+    });
+  });
+
+  terms.forEach(({ node }, index) => {
+    const { slug } = node.frontmatter;
+    console.log(slug);
+    createPage({
+      path: `${slug}`,
+      // This component will wrap our MDX content
+      component: path.resolve(`./src/layout/GlossaryPage.tsx`),
+      // You can use the values in this context in
+      // our page layout component
+      context: { slug },
     });
   });
 };

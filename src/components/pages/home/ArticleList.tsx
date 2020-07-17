@@ -44,7 +44,10 @@ const articlesQuery = graphql`
   query {
     allMdx(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { draft: { ne: true } } }
+      filter: {
+        frontmatter: { draft: { ne: true } }
+        fileAbsolutePath: { regex: "/(articles)/.*(mdx?)$/" }
+      }
     ) {
       edges {
         node {
