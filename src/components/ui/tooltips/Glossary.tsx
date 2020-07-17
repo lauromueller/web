@@ -18,10 +18,10 @@ const Glossary: FunctionComponent<GlossaryProps> = ({ children, ...rest }) => {
         let leftPos = left;
 
         if (p === 'top') {
-          if (mouseEvent.clientX - 157 < 0) {
+          if (mouseEvent.clientX - 200 < 0) {
             leftPos = 10;
-          } else if (mouseEvent.clientX + 157 > window.innerWidth) {
-            leftPos = window.innerWidth - 304;
+          } else if (mouseEvent.clientX + 200 > window.innerWidth) {
+            leftPos = window.innerWidth - 320;
           }
         }
 

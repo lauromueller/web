@@ -5,8 +5,26 @@
   box-shadow: 0 0 2px 0 rgba(240,240,240,1) !important;
 
   &.place-top {
-    &:after {
-      border: 0 solid #2c9448 !important;
+    &:after, &:before {
+      border: 0 !important;
+    }
+  }
+
+  &.place-bottom {
+    &:after, &:before {
+      border: 0 !important;
+    }
+  }
+
+  &.place-right {
+    &:after, &:before {
+      border: 0 !important;
+    }
+  }
+
+  &.place-left {
+    &:after, &:before {
+      border: 0 !important;
     }
   }
 }
