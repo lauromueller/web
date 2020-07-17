@@ -27,7 +27,7 @@ export type ArticleEdge = {
 };
 
 export type ArticleList = {
-  allMarkdownRemark: {
+  allMdx: {
     edges: ArticleEdge[];
   };
 };
@@ -42,14 +42,14 @@ const StyledArticleListWrapper = styled.div`
 
 const articlesQuery = graphql`
   query {
-    allMarkdownRemark(
+    allMdx(
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: { frontmatter: { draft: { ne: true } } }
     ) {
       edges {
         node {
           id
-          excerpt(format: HTML, pruneLength: 300)
+          excerpt(pruneLength: 300)
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             field
@@ -59,11 +59,6 @@ const articlesQuery = graphql`
             tags
             category
           }
-          fields {
-            readingTime {
-              text
-            }
-          }
         }
       }
     }
@@ -72,7 +67,7 @@ const articlesQuery = graphql`
 
 const ArticleList: FunctionComponent = () => {
   const {
-    allMarkdownRemark: { edges },
+    allMdx: { edges },
   } = useStaticQuery<ArticleList>(articlesQuery);
 
   const Articles = edges.map(edge => (

@@ -12,13 +12,24 @@ module.exports = {
   plugins: [
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        plugins: [
+        extensions: [`.md`, `.mdx`],
+        gatsbyRemarkPlugins: [
           `gatsby-remark-prismjs`,
           `gatsby-remark-reading-time`,
           `gatsby-remark-dropcap`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 768,
+            },
+          },
         ],
       },
     },

@@ -67,6 +67,7 @@ const ArticleLink: FunctionComponent<ArticleLinkProps> = ({ article }) => {
             {article.frontmatter.date}
           </p>
         </StyledIndicator>
+        {/*
         <StyledIndicator>
           <p>
             <StyledIcon role="img" aria-label="clock">
@@ -75,6 +76,7 @@ const ArticleLink: FunctionComponent<ArticleLinkProps> = ({ article }) => {
             {article.fields.readingTime.text}
           </p>
         </StyledIndicator>
+        */}
       </StyledIndicatorsWrapper>
       <StyledExcerpt dangerouslySetInnerHTML={{ __html: article.excerpt }} />
       <div>

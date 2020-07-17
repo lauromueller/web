@@ -3,12 +3,20 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require(`path`);
 
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    },
+  });
+};
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   // Destructure the createPage function from the actions object
   const { createPage } = actions;
   const result = await graphql(`
     {
-      allMarkdownRemark(
+      allMdx(
         sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
         filter: { frontmatter: { draft: { ne: true } } }
@@ -29,7 +37,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild(`🚨  ERROR: Loading "createPages" query`);
   }
   // Create blog post pages.
-  const posts = result.data.allMarkdownRemark.edges;
+  const posts = result.data.allMdx.edges;
 
   // you'll call `createPage` for each result
   posts.forEach(({ node }, index) => {

@@ -2,3 +2,13 @@
 'theme',
 'typography',
 'prism';
+
+.gatsby-resp-image-wrapper {
+  margin: 0 -1.7rem !important;
+}
+
+@media (max-width: 768px) {
+  .gatsby-resp-image-wrapper {
+    margin: 0 !important;
+  }
+}

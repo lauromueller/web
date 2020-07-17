@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import { BasicPage } from '.';
@@ -26,22 +27,24 @@ const StyledContentWrapper = styled.div`
     h6 {
       padding: 0;
     }
+
     margin: 16px auto;
   }
 `;
 
 const ArticlePage: FunctionComponent<any> = ({ data }) => {
-  const { markdownRemark } = data; // data.markdownRemark holds your post data
-  const { frontmatter, html } = markdownRemark;
+  const { mdx } = data; // data.mdx holds your post data
+  const { frontmatter, body } = mdx;
+
+  console.log(frontmatter.authors);
 
   return (
     <BasicPage>
       <StyledContentWrapper>
         <h1>{frontmatter.title}</h1>
-        <div
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+        <div className="blog-post-content">
+          <MDXRenderer>{body}</MDXRenderer>
+        </div>
       </StyledContentWrapper>
     </BasicPage>
   );
@@ -51,18 +54,22 @@ export default ArticlePage;
 
 export const pageQuery = graphql`
   query($slug: String!, $area: String!, $field: String) {
-    markdownRemark(
+    mdx(
       frontmatter: {
         slug: { eq: $slug }
         area: { eq: $area }
         field: { eq: $field }
       }
     ) {
-      html
+      body
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         slug
         title
+        authors {
+          firstname
+          lastname
+        }
       }
     }
   }
