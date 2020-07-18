@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;500;700&family=PT+Sans:wght@400;500;700&display=swap');
 
 html {
-  font-family: 'PT Serif', serif;
+  font-family: 'PT Sans', serif;
   font-size: 16px;
   color: var(--lm-color-dark);
 }
@@ -32,6 +32,10 @@ h6 {
 h1 {
   margin-top: 2.027rem;
   font-size: 2.488rem;
+
+  @media (max-width: 576px) {
+    font-size: 2.1rem;
+  }
 }
 
 h2 {

@@ -6,7 +6,7 @@ import { Article } from './ArticleList';
 
 const StyledLinkWrapper = styled.div`
   padding: 40px 0 24px 0;
-  border-bottom: 1px solid var(--lm-color-light);
+  border-bottom: 1px solid var(--lm-color-secondary);
   display: inline-block;
 
   @media (max-width: 768px) {

@@ -8,6 +8,10 @@ const StyledWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+
+  @media (max-width: 576px) {
+    margin: 28px 0 0 0;
+  }
 `;
 
 const StyledImage = styled.img`
