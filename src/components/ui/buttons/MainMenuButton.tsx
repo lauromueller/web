@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 const outlinedStyle = css`
   letter-spacing: 0.05em;
   border: 0;
-  padding: 16px;
+  padding: 0;
   background-color: transparent;
   color: var(--lm-color-primary);
   font-size: 1rem;
@@ -25,7 +25,7 @@ const outlinedStyle = css`
   }
 
   @media (max-width: 576px) {
-    padding: 8px;
+    font-size: 0.8rem;
   }
 `;
 

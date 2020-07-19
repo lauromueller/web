@@ -16,10 +16,7 @@ authors:
 book: Software Architecture in Practice
 ---
 
-Trying to create software without dedicating time to think about its architecture is similar to
-trying to build a skyscraper without drawing blueprints. It may go on for a while, but at some point the
-lack of structure and planning make it very hard, if not impossible, to complete the project.
-INCOMPLETE... WE NEED SOMETHING
+Trying to create software without dedicating time to think about its architecture is similar to trying to build a skyscraper without drawing blueprints. It may go on for a while, but at some point the lack of structure and planning make it very hard, if not impossible, to complete the project. INCOMPLETE... WE NEED SOMETHING
 
 <GlossaryTooltip slug="glossary/software-engineering/module-structure">
   Content
@@ -33,46 +30,33 @@ INCOMPLETE... WE NEED SOMETHING
 
 ## The scope of software architecture
 
-The software architecture is the bridge between business goals and the software product that fulfills
-those goals.
+The software architecture is the bridge between business goals and the software product that fulfills those goals.
 
 <blockquote>
-  The software architecture of a system is the set of structures needed to
-  reason about the system, which comprise software elements, relations among
-  them, and properties of both.
+The software architecture of a system is the set of structures needed to reason about the system, which comprise software elements, relations among them, and properties of both.
 </blockquote>
 
 The definition above presents three elements of software architecture.
 
 ### A set of software structures
 
-The basic unit of an architecture is the software structure. This can be thought as a set of
-elements that are connected to each other through relations.
+The basic unit of an architecture is the software structure. This can be thought as a set of elements that are connected to each other through relations.
 
 There are varied ways of defining a structure, among which I would like to highlight:
 
 #### Structures as static modules
 
-A module is assigned a specific responsibility. For example, a module may refer to the database
-functionalities, to the user interface, to the business logic, among many other possibilities.
-Such modules may be divided into submodules for highly complex systems, making it easier to
-divide the functionality into isolated software structures. Decomposing a highly complex module
-into several submodules is referred to as [module decomposition](./module-decomposition.md).
+A module is assigned a specific responsibility. For example, a module may refer to the database functionalities, to the user interface, to the business logic, among many other possibilities. Such modules may be divided into submodules for highly complex systems, making it easier to divide the functionality into isolated software structures. Decomposing a highly complex module into several submodules is referred to as [module decomposition](./module-decomposition.md).
 
 Another well-known module architecture emerges from class diagrams.
 
 Aggregating modules into layers is also useful for creating a modular structure.
 
-Module structures are considered static since they focus on how the software is divided
-into different chunks and each chunk is assigned to a team.
+Module structures are considered static since they focus on how the software is divided into different chunks and each chunk is assigned to a team.
 
 #### Structures as dynamic interactions
 
-Another way of thinking about the structures involve approaching them through the lenses of
-the interaction between components at runtime to successfully implement the software
-functionality. A system can sometimes be thought of as a set of services which communicate with
-each other through an infrastructure layer and that, through synchronization and interaction,
-deliver the desired functionality of the program.
+Another way of thinking about the structures involve approaching them through the lenses of the interaction between components at runtime to successfully implement the software functionality. A system can sometimes be thought of as a set of services which communicate with each other through an infrastructure layer and that, through synchronization and interaction, deliver the desired functionality of the program.
 
 ### An abstraction exercise
 
@@ -80,120 +64,84 @@ Software architecture is an abstraction of the actual system. In other words, it
 
 ## Architectural structures and views
 
-Structures and views provide the capability of viewing parts of the system architecture in a self-
-contained manner, so that it is possible to examine a certain subsystem in detail without having to
-fully understand the whole system architecture. With increasingly complex systems, fully understanding
-the entire architecture is becoming considerably more resource consuming without bringing equally-sized
-benefits.
+Structures and views provide the capability of viewing parts of the system architecture in a self-contained manner, so that it is possible to examine a certain subsystem in detail without having to fully understand the whole system architecture. With increasingly complex systems, fully understanding the entire architecture is becoming considerably more resource consuming without bringing equally-sized benefits.
 
 ## Kinds of architecture
 
 ### Module structures
 
-Embody decisions related to how the system will be structured in terms of code and data units that must
-be implemented. In module structures, the elements are modules of some kind. A module can be anything
-varying from classes to a division of functionality into files which are determined to be self-contained.
+Embody decisions related to how the system will be structured in terms of code and data units that must be implemented. In module structures, the elements are modules of some kind. A module can be anything varying from classes to a division of functionality into files which are determined to be self-contained.
 
-Modules are a static representation of the system, and they are assigned areas of functional responsibility.
-When considering a module structure, we focus on addressing questions such as:
+Modules are a static representation of the system, and they are assigned areas of functional responsibility. When considering a module structure, we focus on addressing questions such as:
 
-- What is the primary functionality of each module?
-- Which other elements is the module allowed / required to use?
-- Which other elements does the module depend on?
-- Which modules are related to other modules based on specialization and generalization relationships?
+* What is the primary functionality of each module?
+* Which other elements is the module allowed / required to use?
+* Which other elements does the module depend on?
+* Which modules are related to other modules based on specialization and generalization relationships?
 
-One benefit of looking at the module view is that is provides a good overview of the impact on the system
-caused by changes in a module. It provides insight on the modifiability of a system.
+One benefit of looking at the module view is that is provides a good overview of the impact on the system caused by changes in a module. It provides insight on the modifiability of a system.
 
 ### Component-and-connector structures
 
-These structures relate to decisions regarding how the system is going to be structured as a set of elements
-that have runtime behavior and interact between each other. Microservices are a trending topic over
-the recent years. Understanding the foundations of component-and-connector structures can go a long way
-in understanding how to design a solid architecture around microservices for your product.
+These structures relate to decisions regarding how the system is going to be structured as a set of elements that have runtime behavior and interact between each other. Microservices are a trending topic over the recent years. Understanding the foundations of component-and-connector structures can go a long way in understanding how to design a solid architecture around microservices for your product.
 
-In component-and-connector structures, the elements are runtime components (where the computation actually
-happens - examples: services, peers, clients, servers, filters, etc) and connectors (which refer to how
-different components talk with each other - examples: call-return, process synchronization operators, pipes, etc).
+In component-and-connector structures, the elements are runtime components (where the computation actually happens - examples: services, peers, clients, servers, filters, etc) and connectors (which refer to how different components talk with each other - examples: call-return, process synchronization operators, pipes, etc).
 
 Questions that are under consideration for component-and-connector structures:
 
-- What are the major executing components and how do they interact with each other at runtime?
-- What are the major shared data stores?
-- Which parts of the system are replicated?
-- How does the data progress through the system?
-- What parts of the system can run in parallel?
-- Can the system's structure change as it executes and, if so, how?
+* What are the major executing components and how do they interact with each other at runtime?
+* What are the major shared data stores?
+* Which parts of the system are replicated?
+* How does the data progress through the system?
+* What parts of the system can run in parallel?
+* Can the system's structure change as it executes and, if so, how?
 
-Component-and-connector structures are also essential for addressing runtime questions related to performance,
-security, availability, etc.
+Component-and-connector structures are also essential for addressing runtime questions related to performance, security, availability, etc.
 
 ### Allocation structures
 
-Allocation structures relate to how the system is allocated to external resources and its environment (examples:
-CPU, file systems, network, development teams, etc.).
+Allocation structures relate to how the system is allocated to external resources and its environment (examples: CPU, file systems, network, development teams, etc.).
 
 Questions that are under consideration for allocation structures:
 
-- What processor does each software element execute on?
-- In what directories or files is each element stored during execution and testing?
-- How are software elements assigned to development teams?
+* What processor does each software element execute on?
+* In what directories or files is each element stored during execution and testing?
+* How are software elements assigned to development teams?
 
 ## Useful module structures
 
 ### Decomposition structure
 
-The decomposition structure focuses on _is-a-submodule-of_ relations. In other words, it aims at decomposing
-the structure of a system in a hierarchical representation of submodules until the modules are small enough
-to be understood and to provide a realistic overview of the system. The decomposition structure acts as
-a starting point for the project team to define what each module will do, as well as implementation details.
-The decomposition structure also plays a major role in determining the mobifiability of the system.
+The decomposition structure focuses on _is-a-submodule-of_ relations. In other words, it aims at decomposing the structure of a system in a hierarchical representation of submodules until the modules are small enough to be understood and to provide a realistic overview of the system. The decomposition structure acts as a starting point for the project team to define what each module will do, as well as implementation details. The decomposition structure also plays a major role in determining the mobifiability of the system.
 
 ### Uses structure
 
-The uses structure focuses on _uses_ relations. In other words, it shown how modules use and depend on other
-modules for their functionality to be performed. The correctness of the used module is essential for the
-correctness of the first module.
+The uses structure focuses on _uses_ relations. In other words, it shown how modules use and depend on other modules for their functionality to be performed. The correctness of the used module is essential for the correctness of the first module.
 
-When correctly approach, the _uses structure_ can provide high value by defining closed functional subsets
-of modules and thus enabling incremental development.
+When correctly approach, the _uses structure_ can provide high value by defining closed functional subsets of modules and thus enabling incremental development.
 
 ### Layer structure
 
-The layer structure distributes modules as layers which interact with each other in a restrictive manner.
-The exact degree of restriction depends on the system designer, and more restrictive designs tend to be
-more portable. Portability in this sense means being able to change the underlying computing platform
-without having to modify the whole system to adapt to the new platform.
+The layer structure distributes modules as layers which interact with each other in a restrictive manner. The exact degree of restriction depends on the system designer, and more restrictive designs tend to be more portable. Portability in this sense means being able to change the underlying computing platform without having to modify the whole system to adapt to the new platform.
 
 ### Class structure
 
-The class structure focuses on _inherits from_ or _is an instance of_ relations. This allows to clearly
-define the sets of shared behavior and attributes by looking at super and sub classes. Note that, although
-this resembles the decomposition structure in the sense that both have a similar hierarchical organization,
-the class structure does not match 1 to 1 the module-submodule structure of the system.
+The class structure focuses on _inherits from_ or _is an instance of_ relations. This allows to clearly define the sets of shared behavior and attributes by looking at super and sub classes. Note that, although this resembles the decomposition structure in the sense that both have a similar hierarchical organization, the class structure does not match 1 to 1 the module-submodule structure of the system.
 
 ### Data model
 
-The data model represents the system in terms of the different entities that compose it and their relations.
-The relations between different entities also define how the data of the system will be structured.
+The data model represents the system in terms of the different entities that compose it and their relations. The relations between different entities also define how the data of the system will be structured.
 
 ## Useful C&C Structures
 
-Component-and-connector structures show the system's behavior and interdependencies during runtime, meaning
-that it does not focus on the implementation details of the modules. Instead, it focuses on how they
-interact during their execution. Component-and-connector relations are of the type _attachment_, showing
-how the different components and connectors of the system are wired up together.
+Component-and-connector structures show the system's behavior and interdependencies during runtime, meaning that it does not focus on the implementation details of the modules. Instead, it focuses on how they interact during their execution. Component-and-connector relations are of the type _attachment_, showing how the different components and connectors of the system are wired up together.
 
 ### Service structure
 
-The units of this structure are the systems themselves, which interact with each through service coordination
-mechanisms. These communication interfaces are crucial for developing a system that is independent from
-external systems and that can interact with elements independently developed by third parties.
+The units of this structure are the systems themselves, which interact with each through service coordination mechanisms. These communication interfaces are crucial for developing a system that is independent from external systems and that can interact with elements independently developed by third parties.
 
 ### Concurrency structure
 
-The concurrency structure focuses on organizing the system based on thread execution. It helps the architect
-identify which parts of the system offer opportunities for parallelism, as well as the parts that may pose
-challenges related to resource contention.
+The concurrency structure focuses on organizing the system based on thread execution. It helps the architect identify which parts of the system offer opportunities for parallelism, as well as the parts that may pose challenges related to resource contention.
 
 ## Useful allocation structures

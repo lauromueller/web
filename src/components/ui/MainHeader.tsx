@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { MainMenuButton } from './buttons';
+import FeaturedImage from '../../assets/images/featuredImage.png';
 
 const StyledLink = styled(props => <Link {...props} />)`
   color: var(--lm-color-dark);
@@ -25,21 +26,28 @@ const StyledHeader = styled.div`
 
   @media (max-width: 576px) {
     margin-top: 24px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  }
+`;
+
+const StyledImage = styled.img`
+  width: 48px;
+  height: auto;
+
+  @media (max-width: 576px) {
+    width: 36px;
   }
 `;
 
 const StyledSeparator = styled.span`
   color: var(--lm-color-secondary-shade);
+  padding: 0 8px;
 `;
 
 const MainHeader: FunctionComponent = props => {
   return (
     <StyledHeader {...props}>
       <StyledLink to="/">
-        <StyledH4>Lauro Müller</StyledH4>
+        <StyledImage src={FeaturedImage} />
       </StyledLink>
       <div>
         {/*
