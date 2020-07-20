@@ -43,6 +43,13 @@ pre > ::-webkit-scrollbar-thumb {
   min-height: 1.5rem;
 }
 
+p code {
+  background-color: #000000;
+  border-radius: 4px;
+  padding: 0.3rem !important;
+  color: var(--lm-color-secondary);
+}
+
 /*
 
 .gatsby-highlight pre[class*="language-"].line-numbers {

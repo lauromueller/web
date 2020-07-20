@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { CopyCodeButton } from '../ui/buttons';
 
 export type CodeHighlighterProps = {
+  inline?: boolean;
   code: string;
   language: Language;
 };
@@ -35,6 +36,8 @@ const StyledPre = styled.pre`
   position: relative;
 `;
 
+const StyledPreInline = styled.pre``;
+
 const InvisibleTextArea = styled.textarea`
   width: 0;
   height: 0;
@@ -49,6 +52,7 @@ const ButtonTextareaContainer = styled.div`
 
 const CodeHighlighter: FunctionComponent<CodeHighlighterProps> = ({
   code,
+  inline = false,
   language,
 }) => {
   const [copied, setCopied] = useState<boolean>(false);
@@ -60,6 +64,29 @@ const CodeHighlighter: FunctionComponent<CodeHighlighterProps> = ({
       setTimeout(() => setCopied(false), 5000);
     }
   }, [copied]);
+
+  if (inline) {
+    return (
+      <Highlight
+        {...defaultProps}
+        theme={undefined}
+        code={code}
+        language={language || 'jsx'}
+      >
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <code className={className} style={style}>
+            {tokens.map((line, i) => (
+              <React.Fragment key={line.toString()}>
+                {line.map((token, key) => (
+                  <span {...getTokenProps({ token, key })} />
+                ))}
+              </React.Fragment>
+            ))}
+          </code>
+        )}
+      </Highlight>
+    );
+  }
 
   return (
     <Highlight

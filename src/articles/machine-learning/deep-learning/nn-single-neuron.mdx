@@ -5,13 +5,15 @@ field: machine-learning
 area: deep-learning
 slug: nn-single-neuron
 category: no category
-draft: True
+draft: False
 tags: ['deep learning', 'neural networks']
 ---
 
 import { CodeHighlighter } from 'components/articles';
 
-Test neural network
+Neurons are the fundamental building blocks of neural networks. A neuron is composed of two parts: a value function computer on the neuron's inputs, and an activation function, which maps the output of the value function to a
+
+This article starts by navigating through the individual steps of implementing a single neuron. We will discuss in details how we can leverage <CodeHighlighter code={`numpy`} language="python" inline /> not only to optimize the performance of our code but also to improve its readability. We will then move to more general aspects involved in the implementation of the neuron. For instance, how do different activation functions behave for a given dataset? We will go through several activation functions and perform a statistical comparison between the results of the models implemented with each activation function as to verify which one is more suited to our dataset. This step is crucial not only here, but pretty much everywhere in machine learning. In other words, it addresses the question "How can we know, with a certain confidence-level, that model A performs better than model B?" The scope of this question is very broad, and I will not try to answer everything here in this article. We can, however, get a taste of how to use statistics for model comparison.
 
 <CodeHighlighter
   code={`
@@ -22,7 +24,7 @@ Test neural network
 const test = "This is a somwhat longer line which should not break into the next line";
 return () => <App />;
 `}
-  language="jsx"
+  language="python"
 />
 
 $a + b = c$ and continue writing! The next paragraph is a whole equation
