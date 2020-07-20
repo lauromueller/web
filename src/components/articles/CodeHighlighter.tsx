@@ -44,7 +44,7 @@ const InvisibleTextArea = styled.textarea`
 
 const ButtonTextareaContainer = styled.div`
   margin-top: 0.5rem;
-  margin-right: 1em;
+  margin-right: 0.5rem;
 `;
 
 const CodeHighlighter: FunctionComponent<CodeHighlighterProps> = ({
