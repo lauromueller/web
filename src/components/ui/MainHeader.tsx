@@ -1,8 +1,13 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { MainMenuButton } from './buttons';
+import { withResizeDetector } from 'react-resize-detector';
 import FeaturedImage from '../../assets/images/featuredImage2.png';
+import { TopMainMenu } from './miscellaneous';
+
+export type MainHeaderProps = {
+  width: number;
+};
 
 const StyledLink = styled(props => <Link {...props} />)`
   color: var(--lm-color-dark);
@@ -37,30 +42,18 @@ const StyledImage = styled.img`
   }
 `;
 
-const StyledSeparator = styled.span`
-  color: var(--lm-color-secondary-shade);
-  padding: 0 8px;
-`;
-
-const MainHeader: FunctionComponent = props => {
+const MainHeader: FunctionComponent<MainHeaderProps> = ({
+  width,
+  ...props
+}) => {
   return (
     <StyledHeader {...props}>
       <StyledLink to="/">
         <StyledImage src={FeaturedImage} />
       </StyledLink>
-      <div>
-        {/*
-        <MainMenuButton>Series</MainMenuButton>
-        <StyledSeparator>/</StyledSeparator>
-        <MainMenuButton>Glossary</MainMenuButton>
-        <StyledSeparator>/</StyledSeparator>
-        <MainMenuButton>CV</MainMenuButton>
-        <StyledSeparator>/</StyledSeparator>
-        <MainMenuButton>Contact</MainMenuButton>
-        */}
-      </div>
+      <TopMainMenu containerWidth={width} />
     </StyledHeader>
   );
 };
 
-export default MainHeader;
+export default withResizeDetector(MainHeader);
