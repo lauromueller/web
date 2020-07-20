@@ -4,9 +4,9 @@ date: '2020-01-10'
 field: google-cloud
 area: fundamentals
 slug: gcp-structure
-category:
-tags:
-draft: true
+category: no category
+draft: True
+tags: []
 ---
 
 Projects to organize work: use them to group together related resources with a common business objective.

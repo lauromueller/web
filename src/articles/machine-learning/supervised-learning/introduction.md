@@ -4,9 +4,9 @@ date: '2020-01-10'
 field: machine-learning
 area: supervised-learning
 slug: introduction
-category: 'machine learning'
-tags: machine learning, supervised learning
-draft: true
+category: no category
+draft: True
+tags: []
 ---
 
 Structured data vs. Unstructured data

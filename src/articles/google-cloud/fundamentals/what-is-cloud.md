@@ -4,9 +4,9 @@ date: '2020-01-10'
 field: google-cloud
 area: fundamentals
 slug: cloud-computing
-category:
-tags:
-draft: true
+category: no category
+draft: True
+tags: []
 ---
 
 5 equally important traits of cloud computing:

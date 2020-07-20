@@ -4,15 +4,9 @@ date: '2020-01-10'
 field: software-engineering
 area: software-architecture
 slug: introduction
-category: 'software engineering'
-tags: 'software architecture'
-authors:
-  - firstname: Len
-    lastname: Bass
-  - firstname: Paul
-    lastname: Clements
-  - firstname: Rick
-    lastname: Kazman
+category: no category
+draft: False
+tags: ["software architecture"]
 book: Software Architecture in Practice
 ---
 
@@ -33,7 +27,9 @@ Trying to create software without dedicating time to think about its architectur
 The software architecture is the bridge between business goals and the software product that fulfills those goals.
 
 <blockquote>
-The software architecture of a system is the set of structures needed to reason about the system, which comprise software elements, relations among them, and properties of both.
+  The software architecture of a system is the set of structures needed to
+  reason about the system, which comprise software elements, relations among
+  them, and properties of both.
 </blockquote>
 
 The definition above presents three elements of software architecture.
@@ -74,10 +70,10 @@ Embody decisions related to how the system will be structured in terms of code a
 
 Modules are a static representation of the system, and they are assigned areas of functional responsibility. When considering a module structure, we focus on addressing questions such as:
 
-* What is the primary functionality of each module?
-* Which other elements is the module allowed / required to use?
-* Which other elements does the module depend on?
-* Which modules are related to other modules based on specialization and generalization relationships?
+- What is the primary functionality of each module?
+- Which other elements is the module allowed / required to use?
+- Which other elements does the module depend on?
+- Which modules are related to other modules based on specialization and generalization relationships?
 
 One benefit of looking at the module view is that is provides a good overview of the impact on the system caused by changes in a module. It provides insight on the modifiability of a system.
 
@@ -89,12 +85,12 @@ In component-and-connector structures, the elements are runtime components (wher
 
 Questions that are under consideration for component-and-connector structures:
 
-* What are the major executing components and how do they interact with each other at runtime?
-* What are the major shared data stores?
-* Which parts of the system are replicated?
-* How does the data progress through the system?
-* What parts of the system can run in parallel?
-* Can the system's structure change as it executes and, if so, how?
+- What are the major executing components and how do they interact with each other at runtime?
+- What are the major shared data stores?
+- Which parts of the system are replicated?
+- How does the data progress through the system?
+- What parts of the system can run in parallel?
+- Can the system's structure change as it executes and, if so, how?
 
 Component-and-connector structures are also essential for addressing runtime questions related to performance, security, availability, etc.
 
@@ -104,9 +100,9 @@ Allocation structures relate to how the system is allocated to external resource
 
 Questions that are under consideration for allocation structures:
 
-* What processor does each software element execute on?
-* In what directories or files is each element stored during execution and testing?
-* How are software elements assigned to development teams?
+- What processor does each software element execute on?
+- In what directories or files is each element stored during execution and testing?
+- How are software elements assigned to development teams?
 
 ## Useful module structures
 

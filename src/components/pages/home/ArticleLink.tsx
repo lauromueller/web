@@ -8,6 +8,7 @@ const StyledLinkWrapper = styled.div`
   padding: 40px 0 24px 0;
   border-bottom: 1px solid var(--lm-color-secondary);
   display: inline-block;
+  width: 100%;
 
   @media (max-width: 768px) {
     padding: 24px 0 12px 0;
@@ -48,9 +49,7 @@ export type ArticleLinkProps = {
 };
 
 const ArticleLink: FunctionComponent<ArticleLinkProps> = ({ article }) => {
-  const tags = article.frontmatter.tags.split(',').map(str => str.trim());
-
-  const { field, area, slug } = article.frontmatter;
+  const { field, area, slug, tags } = article.frontmatter;
 
   return (
     <StyledLinkWrapper>

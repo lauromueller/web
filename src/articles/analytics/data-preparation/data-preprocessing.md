@@ -4,9 +4,9 @@ date: '2020-01-10'
 field: analytics
 area: data-preparation
 slug: 'data-preprocessing-introduction'
-category: 'data analysis'
-tags: 'data preprocessing, machine learning'
-draft: true
+category: data analysis
+draft: True
+tags: []
 ---
 
 Independently of which application area, data preprocessing is a required step.

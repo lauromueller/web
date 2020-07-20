@@ -4,9 +4,9 @@ date: '2020-01-10'
 field: statistics
 area: regression
 slug: logistic-regression
-category: 'statistics'
-tags: deep learning, neural networks, machine learning
-draft: true
+category: no category
+draft: True
+tags: []
 ---
 
 Given an input x in R^n, a parameter w in R^n and a number b.

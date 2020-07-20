@@ -4,9 +4,9 @@ date: '2020-01-10'
 field: machine-learning
 area: deep-learning
 slug: neural-networks
-category: 'machine learning'
-tags: deep learning, neural networks
-draft: true
+category: no category
+draft: True
+tags: []
 ---
 
 In very simple terms, a neural network:

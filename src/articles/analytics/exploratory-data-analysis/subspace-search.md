@@ -4,9 +4,9 @@ date: '2020-01-10'
 field: analytics
 area: exploratory-data-analysis
 slug: 'subspace-search'
-category: 'data analysis'
-tags: 'clustering, data preparation, data understanding'
-draft: true
+category: data analysis
+draft: True
+tags: []
 ---
 
 Welcome to the first article in a series of posts that will take a deep dive

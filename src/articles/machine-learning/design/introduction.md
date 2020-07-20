@@ -4,9 +4,9 @@ date: '2020-01-10'
 field: machine-learning
 area: design
 slug: introduction
-category: 'machine learning'
-tags: learning systems, algorithm design
-draft: true
+category: no category
+draft: True
+tags: []
 ---
 
 A bad learning system can never succeed.

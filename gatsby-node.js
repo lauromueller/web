@@ -3,6 +3,30 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require(`path`);
 
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+    type Authors {
+      firstname: String
+      lastname: String
+    }
+    
+    type MdxFrontmatter {
+      title: String!
+      date: Date!
+      field: String!
+      area: String!
+      slug: String!
+      category: String!
+      tags: [String]!
+      draft: Boolean!
+      authors: Authors
+      book: String
+    }
+  `;
+  createTypes(typeDefs);
+};
+
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
@@ -20,7 +44,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
         filter: {
-          frontmatter: { draft: { ne: true } }
+          frontmatter: { draft: { eq: false } }
           fileAbsolutePath: { regex: "/(articles)/.*(mdx?)$/" }
         }
       ) {
@@ -82,7 +106,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   terms.forEach(({ node }, index) => {
     const { slug } = node.frontmatter;
-    console.log(slug);
     createPage({
       path: `${slug}`,
       // This component will wrap our MDX content

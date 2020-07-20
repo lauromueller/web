@@ -13,7 +13,7 @@ export type Article = {
     area: string;
     title: string;
     category: string;
-    tags: string;
+    tags: string[];
   };
   fields: {
     readingTime: {
@@ -45,7 +45,7 @@ const articlesQuery = graphql`
     allMdx(
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: {
-        frontmatter: { draft: { ne: true } }
+        frontmatter: { draft: { eq: false } }
         fileAbsolutePath: { regex: "/(articles)/.*(mdx?)$/" }
       }
     ) {

@@ -4,9 +4,9 @@ date: '2020-01-10'
 field: software-engineering
 area: object-oriented-design
 slug: introduction
-category: 'software engineering'
-tags: 'object oriented programming'
-draft: true
+category: no category
+draft: True
+tags: []
 ---
 
 Object oriented modelling involves the practice of representing key concepts through objects in the software.
