@@ -52,12 +52,12 @@ const MainHeader: FunctionComponent = props => {
         {/*
         <MainMenuButton>Series</MainMenuButton>
         <StyledSeparator>/</StyledSeparator>
-        */}
         <MainMenuButton>Glossary</MainMenuButton>
         <StyledSeparator>/</StyledSeparator>
         <MainMenuButton>CV</MainMenuButton>
         <StyledSeparator>/</StyledSeparator>
         <MainMenuButton>Contact</MainMenuButton>
+        */}
       </div>
     </StyledHeader>
   );

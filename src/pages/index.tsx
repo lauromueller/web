@@ -6,6 +6,7 @@ import {
   CategoryButtons,
   FeaturedText,
 } from '../components/pages/home';
+import { UnderConstruction } from '../components/ui/miscellaneous';
 
 const Index = () => {
   return (
@@ -13,9 +14,12 @@ const Index = () => {
       <FeaturedText>
         On Software Engineering, AI, Analytics, and Business.
       </FeaturedText>
+      {/*
       <CategoryButtons />
       <AuthorIntroduction />
       <ArticleList />
+      */}
+      <UnderConstruction />
     </BasicPage>
   );
 };
