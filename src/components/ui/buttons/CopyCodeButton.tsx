@@ -16,7 +16,6 @@ const filledStyled = css`
   &:hover {
     background-color: var(--lm-color-dark-tint);
     cursor: pointer;
-    color: var(--lm-color-secondary-shade);
   }
 
   &:focus {
