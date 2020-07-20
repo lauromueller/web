@@ -2764,7 +2764,7 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/mdx-js__react@^1.5.2":
+"@types/mdx-js__react@1.5.2":
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/@types/mdx-js__react/-/mdx-js__react-1.5.2.tgz#eb87df0ac135a685cc9bb01075a9036c7b395b0d"
   integrity sha512-M/z869+SVti16ZGqMwg46XTNsBKj5/PNcId9NpjEUVPI2V8wzXpbkkhmhZy1n16nQvMAC6HJuh+Dogn8vPLV6w==
@@ -8014,7 +8014,7 @@ gatsby-plugin-sass@2.3.12:
     "@babel/runtime" "^7.10.3"
     sass-loader "^7.3.1"
 
-gatsby-plugin-sharp@^2.6.14:
+gatsby-plugin-sharp@2.6.14:
   version "2.6.14"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.6.14.tgz#92b1e69a57dcbd316570ccfc58ab4e03bfa252c4"
   integrity sha512-wymSLcssMgaVYl7c5gQVPv+iSU8LQdO5RLp8XaCxi+cmtA/XR1HEM0IZsEzywGDosOrIKWSXdVXI0tkROFbqRg==
@@ -8133,14 +8133,14 @@ gatsby-recipes@^0.1.53:
     ws "^7.3.0"
     xstate "^4.11.0"
 
-gatsby-remark-dropcap@^0.1.2:
+gatsby-remark-dropcap@0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/gatsby-remark-dropcap/-/gatsby-remark-dropcap-0.1.2.tgz#45920c84b8b83cb0505436054cd4a8a7e28c42c1"
   integrity sha512-ngo7lSa81htXUAN6XurW71jUE/xLcdMyaWhxN7sL0bbURWDx0hx96t7wF/fR8HcneJAcUR0qPaB01PPs0ouJ2g==
   dependencies:
     remark-dropcap "^0.1.7"
 
-gatsby-remark-images@^3.3.14:
+gatsby-remark-images@3.3.14:
   version "3.3.14"
   resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.3.14.tgz#584bd6f168665f9af2508bddca36d77ef6e7081b"
   integrity sha512-8GxTek3HlwOlOEhEdUlLVdf3azI7BsgQCoVqNhRIGAF7rP30LpmF8ZK0tSSh3FyCoKI7uAaREQMbL9DLguoCCw==
@@ -8157,7 +8157,7 @@ gatsby-remark-images@^3.3.14:
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
 
-gatsby-remark-katex@^3.3.10:
+gatsby-remark-katex@3.3.10:
   version "3.3.10"
   resolved "https://registry.yarnpkg.com/gatsby-remark-katex/-/gatsby-remark-katex-3.3.10.tgz#a0a0953a2dc001a8fef71e1c0f8edfbea7a5a564"
   integrity sha512-DnOEHtdiO/Ir8jz5ywjvpxgYw2/ySCPTfQ1xSAaR6wLoaIusTet305zrH9wquzchkFiiMOdk73xDYWSnM91wmg==
@@ -11096,7 +11096,7 @@ jsx-ast-utils@^2.4.1:
     array-includes "^3.1.1"
     object.assign "^4.1.0"
 
-katex@^0.12.0:
+katex@0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/katex/-/katex-0.12.0.tgz#2fb1c665dbd2b043edcf8a1f5c555f46beaa0cb9"
   integrity sha512-y+8btoc/CK70XqcHqjxiGWBOeIL8upbS0peTPXTvgrh21n1RiWWcIpSWM+4uXq+IAgNh9YYQWdc7LVDPDAEEAg==
@@ -14079,12 +14079,12 @@ pretty-format@^25.5.0:
     ansi-styles "^4.0.0"
     react-is "^16.12.0"
 
-prism-react-renderer@^1.1.1:
+prism-react-renderer@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.1.1.tgz#1c1be61b1eb9446a146ca7a50b7bcf36f2a70a44"
   integrity sha512-MgMhSdHuHymNRqD6KM3eGS0PNqgK9q4QF5P0yoQQvpB6jNjeSAi3jcSAz0Sua/t9fa4xDOMar9HJbLa08gl9ug==
 
-prismjs@^1.20.0:
+prismjs@1.20.0:
   version "1.20.0"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.20.0.tgz#9b685fc480a3514ee7198eac6a3bf5024319ff03"
   integrity sha512-AEDjSrVNkynnw6A+B1DsFkd6AVdTnp+/WoUixFRULlCLZVRZlVQMVWio/16jv7G1FscUxQxOQhWwApgbnxr6kQ==
@@ -14482,7 +14482,7 @@ react-test-renderer@16.13.1:
     react-is "^16.8.6"
     scheduler "^0.19.1"
 
-react-tooltip@^4.2.7:
+react-tooltip@4.2.7:
   version "4.2.7"
   resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-4.2.7.tgz#245b26aa23bc8ca877f9086ad169207d77281894"
   integrity sha512-z5T3gNplT76rkT7ZImfx/uXfBtS+x7+WK2H8MVZ5skSwETDDx0hs0+P0jwL5gYDaBvsZ7LYiCBzAOd3tN85CMA==
