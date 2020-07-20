@@ -1,22 +1,6 @@
 import React, { ButtonHTMLAttributes, FunctionComponent } from 'react';
 import styled, { css } from 'styled-components';
 
-export type ButtonStyleProps = {
-  type?: 'solid' | 'outlined';
-  shape?: 'rounded' | 'pill';
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'warning'
-    | 'danger'
-    | 'success'
-    | 'light'
-    | 'medium'
-    | 'dark';
-  borderRadius?: number;
-};
-
 const outlinedStyle = css`
   letter-spacing: 0.05em;
   font-weight: 700;

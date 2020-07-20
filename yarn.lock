@@ -8133,6 +8133,13 @@ gatsby-recipes@^0.1.53:
     ws "^7.3.0"
     xstate "^4.11.0"
 
+gatsby-remark-dropcap@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-dropcap/-/gatsby-remark-dropcap-0.1.2.tgz#45920c84b8b83cb0505436054cd4a8a7e28c42c1"
+  integrity sha512-ngo7lSa81htXUAN6XurW71jUE/xLcdMyaWhxN7sL0bbURWDx0hx96t7wF/fR8HcneJAcUR0qPaB01PPs0ouJ2g==
+  dependencies:
+    remark-dropcap "^0.1.7"
+
 gatsby-remark-images@^3.3.14:
   version "3.3.14"
   resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.3.14.tgz#584bd6f168665f9af2508bddca36d77ef6e7081b"
@@ -14763,6 +14770,13 @@ regjsparser@^0.6.4:
   integrity sha512-64O87/dPDgfk8/RQqC4gkZoGyyWFIEUTTh80CU6CWuK5vkCGyekIx+oKcEIYtP/RAxSQltCZHCNu/mdd7fqlJw==
   dependencies:
     jsesc "~0.5.0"
+
+remark-dropcap@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/remark-dropcap/-/remark-dropcap-0.1.7.tgz#d296858fed9b7509b507877906c5d8321dcebde7"
+  integrity sha512-s6ypvGgQAiO+rNgMmxgM7EGSDgNXZKfZvVxEZ6o7eUqgB/Doo36hGaxxpvn1EWGswwvrpMvwtoLmLrMa3P+KeQ==
+  dependencies:
+    unist-util-visit "^2.0.0"
 
 remark-footnotes@1.0.0:
   version "1.0.0"

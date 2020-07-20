@@ -20,6 +20,10 @@ const StyledContentWrapper = styled.div`
   }
 
   @media (max-width: 768px) {
+    margin: 40px auto;
+  }
+
+  @media (max-width: 576px) {
     p,
     h1,
     h2,

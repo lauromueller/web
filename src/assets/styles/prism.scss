@@ -6,15 +6,41 @@
 pre[class*="language-"] {
   background: #000000 !important;
   font-size: 0.9rem !important;
-  line-height: 1.7rem !important;
+  line-height: 1.5rem !important;
 }
 
-.gatsby-highlight {
+pre {
   background-color: #000000;
   border-radius: 8px;
-  padding: 0 0.5rem;
-  overflow: auto;
+  padding: 1.5rem !important;
   margin: 32px 0;
+
+  /* Firefox compatibility */
+  scrollbar-color: var(--lm-color-dark) transparent;
+}
+
+pre > ::-webkit-scrollbar {
+  height: 8px !important;
+  background-color: transparent;
+}
+
+pre > ::-webkit-scrollbar-track {
+  -webkit-box-shadow: none !important;
+  background-color: transparent;
+}
+
+pre > ::-webkit-scrollbar-thumb {
+  background-color: var(--lm-color-dark);
+  border-radius: 16px !important;
+}
+
+.code-container {
+  overflow: auto;
+  padding: 8px 0;
+}
+
+.token-line:not(:last-child) {
+  min-height: 1.5rem;
 }
 
 /*

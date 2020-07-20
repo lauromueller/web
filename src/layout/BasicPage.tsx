@@ -9,7 +9,7 @@ const StyledLayout = styled.div`
   margin: 24px auto;
   padding: 0 16px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 576px) {
     margin: 16px auto;
   }
 `;
