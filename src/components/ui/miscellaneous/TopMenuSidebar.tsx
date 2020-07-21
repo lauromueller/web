@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import UnderConstructionSvg from '../../../assets/images/sidebarUnderConstruction.inline.svg';
+import CloseIcon from '../../../assets/images/closeIcon.png';
 
 export type AnimationTopMenuSidebar = 'open' | 'close';
 
@@ -13,7 +14,11 @@ type StyleProps = {
   animation: AnimationTopMenuSidebar;
 };
 
-const SIDEBAR_WIDTH = 240;
+const SIDEBAR_WIDTH = 300;
+
+const StyledWrapper = styled.div`
+  z-index: 9999;
+`;
 
 const StyledSidebarContainer = styled.div<StyleProps>`
   position: fixed;
@@ -58,6 +63,28 @@ const SidebarContent = styled.div`
   margin: 24px;
 `;
 
+const CloseSidebarWrapper = styled.div`
+  font-size: 0.8rem;
+  margin: 16px 0;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  & span {
+    margin-top: 2px;
+  }
+`;
+
+const StyledImage = styled.img`
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+`;
+
 const TopMenuSidebar: FunctionComponent<TopMenuSidebarProps> = ({
   closeSidebar,
   isSidebarOpen,
@@ -77,20 +104,24 @@ const TopMenuSidebar: FunctionComponent<TopMenuSidebarProps> = ({
 
   if (isSidebarOpen) {
     return (
-      <div>
+      <StyledWrapper>
         <StyledSidebarContainer
           animation={animation}
           onClick={dismissSidebar}
         />
         <StyledSidebar animation={animation}>
           <SidebarContent>
+            <CloseSidebarWrapper onClick={dismissSidebar}>
+              <StyledImage src={CloseIcon} />
+              <span>Close</span>
+            </CloseSidebarWrapper>
             <UnderConstructionSvg />
             <h5 style={{ textAlign: 'center' }}>
               Also undergoing reconstruction :)
             </h5>
           </SidebarContent>
         </StyledSidebar>
-      </div>
+      </StyledWrapper>
     );
   }
 
