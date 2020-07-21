@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 import { MainMenuButton } from '../buttons';
 import { TopMenuSidebar } from './index';
@@ -9,14 +9,26 @@ export type TopMainMenuProps = {
   containerWidth: number;
 };
 
+const sharedDimensions = css`
+  width: 24px;
+  height: 20px;
+`;
+
+const StyledContainer = styled.div`
+  ${sharedDimensions}
+`;
+
 const StyledSeparator = styled.span`
   color: var(--lm-color-secondary-shade);
   padding: 0 8px;
 `;
 
 const StyledImage = styled.img`
-  width: 20px;
-  height: 16px;
+  ${sharedDimensions}
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const TopMainMenu: FunctionComponent<TopMainMenuProps> = ({
@@ -37,13 +49,13 @@ const TopMainMenu: FunctionComponent<TopMainMenuProps> = ({
   const closeSidebar = () => setSidebarOpen(false);
 
   return (
-    <div>
+    <StyledContainer>
       <StyledImage src={TopMenuIcon} onClick={openSidebar} />
       <TopMenuSidebar
         isSidebarOpen={isSidebarOpen}
         closeSidebar={closeSidebar}
       />
-    </div>
+    </StyledContainer>
   );
 
   /*
