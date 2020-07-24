@@ -1,13 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { withResizeDetector } from 'react-resize-detector';
 import FeaturedImage from '../../assets/images/featuredImage2.png';
 import { TopMainMenu } from './miscellaneous';
-
-export type MainHeaderProps = {
-  width: number;
-};
 
 const StyledLink = styled(props => <Link {...props} />)`
   color: var(--lm-color-dark);
@@ -42,18 +37,15 @@ const StyledImage = styled.img`
   }
 `;
 
-const MainHeader: FunctionComponent<MainHeaderProps> = ({
-  width,
-  ...props
-}) => {
+const MainHeader: FunctionComponent = props => {
   return (
     <StyledHeader {...props}>
       <StyledLink to="/">
         <StyledImage src={FeaturedImage} />
       </StyledLink>
-      <TopMainMenu containerWidth={width} />
+      <TopMainMenu />
     </StyledHeader>
   );
 };
 
-export default withResizeDetector(MainHeader);
+export default MainHeader;
