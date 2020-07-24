@@ -17,7 +17,7 @@ This article starts by navigating through the individual steps of implementing a
 
 # The anatomy of a computational neuron
 
-Before we dive into coding the neuron itself, we should first understand its underlying structure and components. The image below summarizes the entire structure, but we will go through each element one by one. 
+Before we dive into coding the neuron itself, we should first understand its underlying structure and components. The image below summarizes the entire structure, but we will go through each element one by one.
 
 <ImageCard>
 
@@ -38,24 +38,30 @@ The second part of a neuron is the computation of a linear combination of the $x
 Once we have the value of the linear combination, we feed this value to an activation function, which will map this value to another real-valued function and then use it to predict the output of our neuron. Naturally, there are several ways we can model the prediction. We will go back to this later in this article and discuss different examples of how different activation functions are used in different contexts.
 
 Some options are (should be non linear):
-* Sigmoid function: can be used for the output
-* tanh function: better for hidden layers
-* ReLU: learns faster than sigmoid and tanh
-* Leaky ReLU: better than ReLU 
+
+- Sigmoid function: can be used for the output
+- tanh function: better for hidden layers
+- ReLU: learns faster than sigmoid and tanh
+- Leaky ReLU: better than ReLU
 
 ### Pros and cons
+
 Sigmoid:
-* Do not use except for output layer
+
+- Do not use except for output layer
 
 Tanh:
-* Superior to sigmoid
+
+- Superior to sigmoid
 
 ReLU:
-* Very popular
+
+- Very popular
 
 Rules of thumb:
-* If output is 0 or 1, sigmoid is better
-* For other units, ReLU is increasingly the default choice
+
+- If output is 0 or 1, sigmoid is better
+- For other units, ReLU is increasingly the default choice
 
 ## Prediction
 
@@ -90,10 +96,10 @@ $$
 
 Reminder: The general methodology to build a Neural Network is to:
 
-1. Define the neural network structure ( # of input units,  # of hidden units, etc). 
+1. Define the neural network structure ( # of input units, # of hidden units, etc).
 2. Initialize the model's parameters
 3. Loop:
-    - Implement forward propagation
-    - Compute loss
-    - Implement backward propagation to get the gradients
-    - Update parameters (gradient descent)
+   - Implement forward propagation
+   - Compute loss
+   - Implement backward propagation to get the gradients
+   - Update parameters (gradient descent)
