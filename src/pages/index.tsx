@@ -8,6 +8,10 @@ import {
 } from '../components/pages/home';
 
 const Index = () => {
+  const key = process.env.API_TOKEN_TEST;
+
+  console.log(key);
+
   return (
     <BasicPage>
       <FeaturedText>

@@ -11,6 +11,6 @@
     "emitDecoratorMetadata": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "types": ["./src/types/"]
+    "types": ["./src/types/", "node"]
   }
 }
