@@ -11,13 +11,13 @@ tags: []
 
 Object storage: stores arbitrary objects with a unique key.
 
-Cloud storage: no need to provision ahead of time. 
+Cloud storage: no need to provision ahead of time.
 
 Each object has a URL.
 
 Composed of buckets. When we create a bucket, we give a globally unique name, a geographical region to store the bucket, and a default storage class.
 
-Objects in the storage are immutable, meaning we do not edit them, instead we create new versions of them. 
+Objects in the storage are immutable, meaning we do not edit them, instead we create new versions of them.
 
 Cloud IAM to control access to objects and buckets.
 
@@ -25,9 +25,10 @@ ACLs offer finer control and define who has access to buckets and objects, as we
 
 ACLs are composed of two parts: (1) scope, defining who can perform the specified actions, and (2) permission, defining which actions can be performed by those within the scope.
 
-Lifecycle management policies: delete objects older than X days, or keep only the X most recents versions of an object, and so on. 
+Lifecycle management policies: delete objects older than X days, or keep only the X most recents versions of an object, and so on.
 
 # Storage classes
+
 Regional, multi-regional, nearline, and coldline.
 
 Regional, multi-regional: high-performance
