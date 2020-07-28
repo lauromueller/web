@@ -5,13 +5,67 @@ field: machine-learning
 area: deep-learning
 slug: nn-single-neuron
 category: no category
-draft: True
+draft: False
 tags: ['deep learning', 'neural networks']
 ---
 
-import { CodeHighlighter } from 'components/articles';
+Neurons are the fundamental building blocks of neural networks. A neuron is composed of two parts: a value function computer on the neuron's inputs, and an activation function, which maps the output of the value function to a
 
-Test neural network
+This article starts by navigating through the individual steps of implementing a single neuron. We will discuss in details how we can leverage <CodeHighlighter code={`numpy`} language="python" inline /> not only to optimize the performance of our code but also to improve its readability. We will then move to more general aspects involved in the implementation of the neuron. For instance, how do different activation functions behave for a given dataset? We will go through several activation functions and perform a statistical comparison between the results of the models implemented with each activation function as to verify which one is more suited to our dataset. This step is crucial not only here, but pretty much everywhere in machine learning. In other words, it addresses the question "How can we know, with a certain confidence-level, that model A performs better than model B?" The scope of this question is very broad, and I will not try to answer everything here in this article. We can, however, get a taste of how to use statistics for model comparison.
+
+# Why program a single neuron?
+
+# The anatomy of a computational neuron
+
+Before we dive into coding the neuron itself, we should first understand its underlying structure and components. The image below summarizes the entire structure, but we will go through each element one by one.
+
+<ImageCard>
+
+![Testing](./assets/nn-single-neuron-01.png)
+
+</ImageCard>
+
+## Inputs
+
+A column vector $\vec{x} \in \mathbb{R}^{n}$, meaning that it has $n$ rows, or $n$ different real-valued attributes. In the example we will code below, we will deal with images. Images are nothing more than a $n \times m \times 3$ matrix, where $n$ represents the width of the image in pixels, $m$ represents its height (also in pixels), and $3$ stands in a third axis where the amount of red, green and blue per pixel is defined. There values are in the range $[0, 255]$, meaning that our $\vec{x}$ can be described as belonging to the $\mathbb{R}^{n \times m \times 3}$ space.
+
+## Value function
+
+The second part of a neuron is the computation of a linear combination of the $x_i$ input values, each weighted by a certain weight $w_i$ and adjusted by a real-valued bias $b$.
+
+## Activation function
+
+Once we have the value of the linear combination, we feed this value to an activation function, which will map this value to another real-valued function and then use it to predict the output of our neuron. Naturally, there are several ways we can model the prediction. We will go back to this later in this article and discuss different examples of how different activation functions are used in different contexts.
+
+Some options are (should be non linear):
+
+- Sigmoid function: can be used for the output
+- tanh function: better for hidden layers
+- ReLU: learns faster than sigmoid and tanh
+- Leaky ReLU: better than ReLU
+
+### Pros and cons
+
+Sigmoid:
+
+- Do not use except for output layer
+
+Tanh:
+
+- Superior to sigmoid
+
+ReLU:
+
+- Very popular
+
+Rules of thumb:
+
+- If output is 0 or 1, sigmoid is better
+- For other units, ReLU is increasingly the default choice
+
+## Prediction
+
+Last but not least, we should do something with the output of the activation function. In a single-neuron network, this final step gives us the prediction. The range of the neuron's output should, naturally, be the same as the actual labels we have for the data. For example, if our labels indicate membership to a certain class or lack thereof, they can be transformed into a binary value of $1$ to indicate membership and $0$ to indicate no membership to the class. We should then make sure that the transformation of the activation function leads to the same range as the real labels.
 
 <CodeHighlighter
   code={`
@@ -22,7 +76,7 @@ Test neural network
 const test = "This is a somwhat longer line which should not break into the next line";
 return () => <App />;
 `}
-  language="jsx"
+  language="python"
 />
 
 $a + b = c$ and continue writing! The next paragraph is a whole equation
@@ -39,3 +93,13 @@ $$
 a & b & c
 \end{bmatrix}
 $$
+
+Reminder: The general methodology to build a Neural Network is to:
+
+1. Define the neural network structure ( # of input units, # of hidden units, etc).
+2. Initialize the model's parameters
+3. Loop:
+   - Implement forward propagation
+   - Compute loss
+   - Implement backward propagation to get the gradients
+   - Update parameters (gradient descent)

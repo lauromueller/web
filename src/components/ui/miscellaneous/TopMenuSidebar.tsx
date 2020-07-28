@@ -16,10 +16,6 @@ type StyleProps = {
 
 const SIDEBAR_WIDTH = 300;
 
-const StyledWrapper = styled.div`
-  z-index: 9999;
-`;
-
 const StyledSidebarContainer = styled.div<StyleProps>`
   position: fixed;
   top: 0;
@@ -29,6 +25,7 @@ const StyledSidebarContainer = styled.div<StyleProps>`
   background-color: rgba(var(--lm-color-dark-rgb), 0.7);
   opacity: 0;
   transition: 0.5s all cubic-bezier(0.09, 0.64, 0.43, 0.92);
+  z-index: 9998;
 
   ${({ animation }) =>
     animation === 'open'
@@ -48,6 +45,7 @@ const StyledSidebar = styled.div<StyleProps>`
   right: -${SIDEBAR_WIDTH}px;
   background-color: #fff;
   transition: 0.5s all cubic-bezier(0.09, 0.64, 0.43, 0.92);
+  z-index: 9999;
 
   ${({ animation }) =>
     animation === 'open'
@@ -104,7 +102,7 @@ const TopMenuSidebar: FunctionComponent<TopMenuSidebarProps> = ({
 
   if (isSidebarOpen) {
     return (
-      <StyledWrapper>
+      <div>
         <StyledSidebarContainer
           animation={animation}
           onClick={dismissSidebar}
@@ -121,7 +119,7 @@ const TopMenuSidebar: FunctionComponent<TopMenuSidebarProps> = ({
             </h5>
           </SidebarContent>
         </StyledSidebar>
-      </StyledWrapper>
+      </div>
     );
   }
 

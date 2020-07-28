@@ -4,7 +4,11 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import { BasicPage } from '.';
-import { GlossaryTooltip } from '../components/articles';
+import {
+  GlossaryTooltip,
+  CodeHighlighter,
+  ImageCard,
+} from '../components/articles';
 
 const StyledContentWrapper = styled.div`
   margin: 80px auto;
@@ -49,7 +53,9 @@ const ArticlePage: FunctionComponent<any> = ({ data }) => {
       <StyledContentWrapper>
         <h1>{frontmatter.title}</h1>
         <div className="blog-post-content">
-          <MDXProvider components={{ GlossaryTooltip }}>
+          <MDXProvider
+            components={{ GlossaryTooltip, ImageCard, CodeHighlighter }}
+          >
             <MDXRenderer>{body}</MDXRenderer>
           </MDXProvider>
         </div>

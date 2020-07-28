@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;500;700&family=PT+Sans:wght@400;500;700&display=swap');
 
+@font-face {
+  font-family: 'JetBrains Mono';
+  src:  url('../fonts/jetbrainsmono/JetBrainsMono-Regular.eot'); /* IE9 Compat Modes */
+  src:  url('../fonts/jetbrainsmono/JetBrainsMono-Regular.woff2') format('woff2'); /* Super Modern Browsers */
+  src:  url('../fonts/jetbrainsmono/JetBrainsMono-Regular.woff') format('woff'); /* Pretty Modern Browsers */
+  src:  url('../fonts/jetbrainsmono/JetBrainsMonoNL-Regular.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+pre,
+code {
+  font-family: "JetBrains Mono", "Monaco", monospace !important;
+}
+
 html {
   font-family: 'PT Sans', serif;
   font-size: 16px;
