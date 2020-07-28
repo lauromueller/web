@@ -1,0 +1,51 @@
+---
+title: 'Elements of a solid software architecture'
+date: '2020-01-10'
+field: software-engineering
+area: software-architecture
+slug: solid-architecture
+category: no category
+draft: False
+tags: ['software architecture']
+book: Software Architecture in Practice
+---
+
+In this article I take the time to discuss a few elements that define what can be considered a solid architecture for your software. While there is no "one size fits all" solution when it comes to your application's architecture (in fact, it can only be evaluated against the context of its final goals), there are two common areas we normally look at to judge the quality of the architectural design.
+
+## Process rules for architecture design
+
+<blockquote>
+  A bad process is almost always synonym of a bad architecture, while a good
+  process is just a prerequisite of a good architecture.
+</blockquote>
+
+The process implemented to define an architecture says a lot about its final quality. If the process is flawed (say, it does not have a review stage), the architecture is more likely to also be flawed. To put it in more direct terms: a bad process is almost always synonym of a bad architecture, while a good process is just a prerequisite of a good architecture.
+
+### Have a well-defined team of architects
+
+Personally, I am against the singleton architect who is responsible for developing the whole architecture. Even though the architect may be in close contact with the development team and the product owner, having only one person with enough technical knowledge to be actively involved in the design process has a few drawbacks. The most important one is that there are contrasting views and opinions about the architecture. Given that the development team's and PO's prerequisites are fulfilled, whatever is produced by the architect has to be accepted. Additionally, if for some reason this architect becomes unavailable, the progress and maintenance of the software architecture will suffer a major blow. There are more reasons to avoid having a one-person team, but these two are already enough to push companies towards having at least two people actively involved in the architecture design process.
+
+That said, the people involved should... Wait for it... Have extensive knowledge about software architecture! Architecture is not the same as defining the modules of the application and how they talk to each other. This is just a very small part of it. Architecture is also not about implementation details: we generally don't care about the internals of a certain module, as long as the requirements defined in the software specification are met. Architecture refers more (but not entirely) to how the software is structured as to meet its quality requirements. There are, among others, availability, interoperability, modifiability, performance, security, testability, and usability. Knowing how to think in terms of such elements is a prerequisite for anyone who takes part of the architecture team. That is to say, **not every developer is a software architect**.
+
+### Quality comes first, functionality comes later
+
+<blockquote>
+  Software quality concerns define the constraints and boundaries within which
+  software functionality is to be developed.
+</blockquote>
+
+We already discussed that the primary concern of an architect relates to the quality attributes of a software. They are the most important constraints that must be considered when defining the architecture. As always, there are tradeoffs between quality and functionality, but the former should always be prioritized. A software that offers a lot of functionality but is very hard to maintain due to its fragile architecture is generally discouraged. Another example would be a software that, because of its dependencies to multiple external APIs for its elaborate functionalities, is unavailable for a significant period when one of them is offline.
+
+To put in a few words, software quality concerns define the constraints and boundaries within which software functionality is to be developed.
+
+### Documented architecture is good architecture
+
+Test
+
+### Evaluate the architecture often and early
+
+### Iterate over the architecture
+
+## Structural rules for architecture design
+
+As said in the first paragraph of this article, there is no such thing as an absolute best architecture for a class of applications. The design must take into consideration the specific context in which the software is being developed, its assumptions, its final quality goals (modifiability, reliability, performance, etc.), and a number of additional criteria. Nevertheless, there are common structural patterns of architectures that increase its quality.
