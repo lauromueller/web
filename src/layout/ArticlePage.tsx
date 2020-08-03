@@ -23,6 +23,11 @@ const StyledContentWrapper = styled.div`
     padding: 0 1.7rem;
   }
 
+  ol,
+  ul {
+    padding: 0 1.7rem 0 4rem;
+  }
+
   @media (max-width: 768px) {
     margin: 40px auto;
   }
@@ -36,6 +41,11 @@ const StyledContentWrapper = styled.div`
     h5,
     h6 {
       padding: 0;
+    }
+
+    ol,
+    ul {
+      padding: 0 0 0 1.5rem;
     }
 
     margin: 16px auto;
