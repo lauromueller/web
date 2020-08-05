@@ -1,0 +1,57 @@
+---
+title: 'Programming a single neuron - Part 1: Introduction and goals'
+date: '2020-01-10'
+field: machine-learning
+area: deep-learning
+slug: nn-single-neuron-introduction
+series: nn-single-neuron
+category: no category
+draft: False
+tags: ['deep learning', 'neural networks']
+---
+
+<FeaturedContent
+  tags={['first', 'second']}
+  author="Lauro Fialho Müller"
+  date="2020-01-10"
+>
+  Neurons are the basic building blocks of any artificial neural network.
+  Understanding their structure and how to implement them is crucial for anyone
+  who wants to fully grasp the power of ANNs and deep learning. The series
+  Programming a single neuron takes a deep dive not only on the math and code of
+  a single neuron but also on many other aspects related to machine learning
+  such as building the initial dataset used for training and evaluating the
+  final model. While not all elements will be discussed in this series, it
+  provides a fairly extensive discussion of many topics involved in architecting
+  a suitable machine learning solution.
+</FeaturedContent>{' '}
+
+Let's start by briefly discussing why it is important to understand each and every aspect of how to build a neural network. As with many other areas in software development, machine learning is a highly iterative process. There is no one-size-fits-all solution. There is no "one-neural-network" that can learn every type of problem and perform well in every scenario. In fact, building a neural network that fits the problem at hand requires many iterations of insight -> implementation -> evaluation -> insight. Experience can give a fair head start when it comes to designing machine learning solutions, but it is only through the thorough understanding of the architecture of neural networks that we can make sensible and correct improvements.
+
+This is the first series of several that will be published on neural networks and deep learning, and its scope is to take us through the process of building a single-neuron neural network. The following three articles in the series will deal with the following topics:
+
+1. Preprocessing data to build a dataset that suits the problem's constraints.
+2. Implementing the single-neuron neural network to perform binary classification through logistic regression.
+3. Evaluating the performance of the classification task and discuss several design aspects of our model.
+
+While you may be disappointed at not jumping right into deep neural networks and whatnot, from my perspective you will be much better prepared for more complex concepts once the basic building block of any neural network, the neuron, is fully understood. Rather than telling you "you should do this, you have to do that", I'll focus on explaining each of the steps as clearly as I can. Once you get the gist of how it works, building more complex neural networks becomes a more natural task. There is much to discuss when it comes to neural networks, but the first and foremost step is to understand how its most fundamental component works as well as the math behind it.
+
+When I say a single-layer, single-neuron neural network, what I really mean is that we will build a binary classifier that uses logistic regression to output a vector of predictions $\vec{\hat{y}} \in \{0, 1\}^n$ where $\hat{y}_i \in \{0, 1\}$ and corresponds to the prediction for some element $i$ in our dataset. When training the model, this information will be used to iteratively optimize the weight vector $W$ connecting the input features to the single neuron. When running the model in a dev dataset, this information will be used to compute the accuracy of the classifier, as well as other quality measures.
+
+One small remark: I will use "dev dataset" to refer to what some consider the "test dataset". In fact, when running machine learning algorithms, the fully correct way to perform model training and validation is to divide the initial dataset into three parts: the training set, the dev set, and the test set. The training set, as you may suspect, is the set used to iteratively train the parameters of the model. The dev test is what is also known as hold-out cross validation test, and is used to select the best model based on the quality measures defined to compare models. Finally, the test set is used to provide an unbiased estimator of the model's performance. For the sake of this series, having a training and dev datasets is already enough, since we don't really need an unbiased estimator of model performance. However, I will keep the naming consistent and will use **dev dataset** when referring to the share of the dataset reserved for model evaluation.
+
+## 1. Some initial considerations
+
+Before we get started, it is important to define some key characteristics of our problem. First and foremost, our ultimate goal is to understand how a single neuron "learns" and improves its predictions over time. Our focus is **not** on data preparation, model evaluation, overfitting, hyperparameter tuning, regularization, multi-neuron or multi-layer NNs, etc. These topics will be discussed in dedicated articles and series. Despite not having a focus on data preparation and evaluation, we will approach the problem from a more comprehensive approach and will discuss in details how the dataset for our model was built and how we can evaluate and compare the performance of our classifier.
+
+### 1.2 Project structure and code
+
+You can find the code for the project under the [web-python-codes github repo](https://github.com/lauromueller/web-python-codes/tree/master/machine-learning/nn-single-neuron) in my profile. Although the scope of this article has nothing to do with how to organize code in Python, I took the liberty of already implementing some good practices regarding properly documenting each function and splitting the functions into smaller modules which have a single responsibility.
+
+For our single-neuron series, we have three modules: <CodeHighlighter code={`datapreparation.py`} language="python" inline />, <CodeHighlighter code={`modeltraining.py`} language="python" inline />, and <CodeHighlighter code={`evaluation.py`} language="python" inline />, each with its own article in the series. Our pipeline will be executed in the <CodeHighlighter code={`main.py`} language="python" inline /> file, and we will make use of it for running the functions of each of these three modules.
+
+The main goal of our project is to build a classifier to predict whether a certain picture is the picture of a cat or not. In order to do that, in the Data Preparation article I build a dataset containing standardized images of cats and non-cat entities (more on that on the article), and prepare it to be used by our model during the training and evaluation phase. The Model Implementation article takes care of the math behind the backpropagation method for training the neural network, and it provides all the necessary code to implement the logistic regression classifier. Finally, the Model Evaluation article discusses several aspects related to the performance of our model as well as its limitations.
+
+There are many secondary goals involved here, and the most important one is for me to give you a holistic view of the task of building a machine learning solution. There are many aspects that go beyond actually building the machine learning model: where to get your data from; how to preprocess and standardize it so that it can be efficiently stored and fed to the machine learning method; how to evaluate the model's performance; how to tune the model's hyperparameters (for example, how many layers or how many neurons per layer should be used); whether the model's result is robust or simply a matter of chance; how does the model perform on different datasets but under the same learning task. While we will not enter into these topics in much detail, we will touch on many of them so that you can get a better understanding of the scope of machine learning tasks.
+
+With all that said, we can move to the second article of this series, where we discuss data preparation and preprocessing.

@@ -1,0 +1,285 @@
+---
+title: 'Programming a single neuron - Part 2: Data preparation'
+date: '2020-01-10'
+field: machine-learning
+area: deep-learning
+slug: nn-single-neuron-data-preparation
+series: nn-single-neuron
+category: no category
+draft: False
+tags: ['deep learning', 'neural networks']
+---
+
+## 3. Preparing our cat and non-cat dataset
+
+Instead of diving into the math and risking losing you right on the spot, I'd say we begin with exploring the data we will be working with. I will create our dataset by composing images from two different datasets from old Kaggle competitions. The first dataset, which contains both cat and dog images, is taken from this [competition](https://www.kaggle.com/c/dogs-vs-cats/data). The second dataset, which contains only plant images, is taken from this [competition](https://www.kaggle.com/c/plant-seedlings-classification). You might be wondering what is the reason behind choosing cats, dogs and plants? The main one: cats and dogs are similar, while cats and plants are very different. Remember, we are working with one single neuron within a single-layer network. There is not much space for complex learning here. As we will see in the evaluation part of this article, the learner performs relatively well when we use cats and plants for training, but it performs considerably worse when we use cats and dogs. This is as expected, since we can do only so much with one single neuron. However, since our goal is to understand the mechanics of neurons (and not to build a perfect classifier), these two examples provide a great way of illustrating the limitations of the model. Because the data doesn't really belong to me nor is open source on the web, I will not share my final dataset with you here. Nonetheless, you should be able to download the two datasets and build your own with the steps we will discuss below. Some important considerations to keep in mind:
+
+1. **Not all images are of the same size.** Since we are working with the simplest possible neural-network, images of different sizes are not recommended. We want to have a fully populated matrix where each cell in a column refers to the same relative pixel in the input image, and this is not possible with images of different sizes.
+2. **Not all images have the cat on the same position.** While this is a consideration to keep in mind, I will simply ignore it and pick cat, dog, and plant images randomly from the base datasets. We will see that despite the variation in the cat position, color, and size, our model is capable of learning the concept of a cat relatively well when using cats and plants as training examples.
+3. **The dimensions of the images are large.** For this simple model, working with images larger than 64x64 would cause it to take many minutes to complete a couple hundred of iterations. Since we are interested in discussing aspects other than building the perfect classifier, we will use a resolution of 64x64. You are welcome to take the code below and tweak it to use different resolutions to see how the learner behaves. The way it is implemented allows you to switch between different resolutions by simply changing the value of a variable.
+
+The general steps involved are loading this data (which is in image format), cropping and scaling it, and storing it in a matrix that will be used as our input matrix for the logistic regression classifier. One important point to highlight here is that it is better to have a mix of cat and non-cat images on our dataset. While having only images of cats on our dataset would still enable learning (as long as the input is normalized), I always find it beneficial to include non-cat images to ensure that the model is more robust.
+
+### 3.1 Understanding and processing the data
+
+We will start with a bunch of raw cat and non-cat images in <CodeHighlighter code={`.jpg`} language="python" inline /> and <CodeHighlighter code={`.png`} language="python" inline /> formats. In my case, they are located under the <CodeHighlighter code={`datasets/{cats, plants, dogs}`} language="python" inline /> folders, relative to the root of the python modules. The process may seem a bit overkill for such a simple example, but data preprocessing is a big part of any machine learning / data science / analytics pipeline, so we better start getting used to more realistic scenarios. In reality, your datasets will hardly ever be delivered in a neat format. Take this "overkill" as an opportunity to learn a few techniques on how to organize and work with more "real-like" data.
+
+For our preprocessing, we will use the following python libraries:
+
+<CodeHighlighter
+  filename={'datapreparation.py'}
+  code={`
+import h5py
+import numpy as np
+from pathlib import Path
+from PIL import Image
+from sklearn.model_selection import train_test_split
+`}
+  language="python"
+/>
+
+If you don't have some of these, make sure to install them appropriately. There are many tutorials out there on how to use virtualenv to isolate your project's dependencies, so I would recommend reading a bit about that if you are not familiar with it.
+
+Once we have installed and imported all packages, we will build a simple <CodeHighlighter code={`.h5`} language="python" inline /> file to store our information. If you are interested in reading more about how to store image datasets on Python, I highly recommend [this article](https://realpython.com/storing-images-in-python/). However, before we go ahead and create our final file containing the actual dataset and the labels, there are a few steps we need to execute to transform our input data. Let's remember our considerations about the raw image files: images are of different size and with the cats in different positions. Therefore, in order to standardize our input matrix, we will implement the following steps:
+
+1. Crop all images into squares using the center as reference
+2. Resize all the images to the same dimensions
+3. Reshape the arrays to stack the RGB values of the pixels into a column vector.
+
+#### 3.1.1 Crop all the images into squares
+
+Cropping all the images into squares with a reference point in the center of the image will allow us to better handle resizing and storing these pictures. The function to achieve this is presented below, and all it does it to identify which of the dimensions is the smallest between width and height, and use it as a reference for <GlossaryTooltip slug="glossary/python/pillow/crop">cropping</GlossaryTooltip> the image into a square.
+
+<CodeHighlighter
+  filename={'datapreparation.py'}
+  code={`
+def crop_image(img):
+    """
+    Helper function to crop the image into a rectangular shape anchored in the center of the image.\n
+    The function crops with respect to the smaller dimension between width and height.
+    :param img: image to be cropped.
+    :return: cropped image.
+    """
+    width, height = img.size
+    reference = width if width <= height else height\n
+    boundaries = (
+        (width - reference) // 2,
+        (height - reference) // 2,
+        (width + reference) // 2,
+        (height + reference) // 2
+    )\n
+    return img.crop(boundaries)
+`}
+  language="python"
+/>
+
+Once we have our images as squares, we can now proceed to resizing them. The order is important, since we want to resize the images **after** they are cropped to avoid any distortions. Simply resizing pictures is not enough, as the algorithm would then be fed distorted versions of cats.
+
+#### 3.1.2 Resize all the images to the same resolution
+
+The function to resize images is even simpler than the one to crop them. It is a simple call to <GlossaryTooltip slug="glossary/python/pillow/resize">img.resize</GlossaryTooltip> with the target resolution for both width and height. The code is presented below.
+
+<CodeHighlighter
+  filename={'datapreparation.py'}
+  code={`
+def resize_image(img, target_res):
+    """
+    Helper function to resize the image to the desired square resolution.\n
+    :param img: square image to be resized.
+    :param target_res: target resolution. Will be used for width and height, as the desired output is a square image.
+    :return: resized image.
+    """
+    return img.resize((target_res, target_res))
+`}
+  language="python"
+/>
+
+With these two functions already implemented, we can discuss the main function for loading images and returning an array of standardized pixel values.
+
+#### 3.1.3 Reshape images and add them to the image array
+
+Before I present the code for loading the images, there is a third small helper function that I implemented to check whether the image under consideration satisfies the minimum dimensions constraints. The code is fairly straightforward, and all it does it to check that both width and height are larger than the minimum dimensions.
+
+<CodeHighlighter
+  filename={'datapreparation.py'}
+  code={`
+def check_image_dimension(img, min_dims):
+    """
+    Helper method to check whether the image dimensions fulfill the minimum required dimensions.\n
+    :param img: image to be checked.
+    :param min_dims: minimum required dimensions.
+    :return: boolean result (True if fulfilled, False otherwise).
+    """
+    width, height = img.size
+    return width >= min_dims and height >= min_dims
+`}
+  language="python"
+/>
+
+With the three helper functions described above, loading the images becomes a straightforward task. All we have to do is specify the directory containing our images, loop over each image, preprocess them, and add them to an array that will be returned at the end of the method. For convenience, I have stored cats and non-cats in two separate directories, thus making it easier to load and correctly label the images.
+
+The steps in the code below are as follows:
+
+1. Load all images form the matching directory
+2. For each image:
+3. Crop it
+4. Resize it
+5. Transform it into a numpy array
+6. Transform it into a column vector
+7. Standardize the pixel values by subtracting the mean of the array from the value and dividing the result by the array's standard deviation
+
+<CodeHighlighter
+  filename={'datapreparation.py'}
+  code={`
+def load_images(images_dir, min_dims, target_res, file_ext):
+    """
+    Helper function to load images from a directory which satisfy minimum dimension constraints, crop, resize, and
+    transform the images into a (target_res**2 * 3, 1) np array for further analysis. Each value in the column array
+    is the value of a pixel and a color in the original image. Because we have target_res * target_res pixels and 3
+    colors in an RGB representation, the resulting shape for the column vector is given by (target_res**2 * 3, 1).\n
+    :param images_dir: directory containing the raw images.
+    :param min_dims: minimum required dimension for the images.
+    :param target_res: target resolution of the images.
+    :param file_ext: file extension of the desired files.
+    :return: array of images in the (target_res**2 * 3, 1) np array format.
+    """
+    image_array = []
+    path_list = Path(images_dir).glob(f'*.{file_ext}')\n
+    for path in path_list:
+        image = Image.open(path)
+        if check_image_dimension(image, min_dims):
+            image = crop_image(image)
+            image = resize_image(image, target_res)
+            image = np.array(image)
+            image = image.reshape(target_res ** 2 * 3, 1)
+            image = (image - np.mean(image)) / np.std(image, ddof=1)
+            image_array.append(image)\n
+    return np.array(image_array)
+`}
+  language="python"
+/>
+
+In terms of normalization of inputs, the standard procedure is to normalize each value by subtracting the mean of the entire array and then dividing the result by the standard deviation of the array. It is important to point that we are setting the parameter <CodeHighlighter code={`ddof=1`} language="python" inline /> to the <CodeHighlighter code={`np.std`} language="python" inline /> function to ensure that we correctly calculate the standard deviation of the sample. Although we are using the more general approach here, for images it may suffice to divide each number by 255 (the maximum value that each input dimension can take).
+
+### 3.2 Building the dataset
+
+Now that we have an array of images represented by their pixel values, the next and final step is to build our final dataset file that will be stored for later use. The code here is perhaps a bit more extensive than in the previous parts, but the logic is not complex. Let me explain the main components:
+
+1. We load the images for both the cats and non-cats arrays. This involves a single step of calling our previous function to load images from a directory obeying the dimension constraints we impose. Additionally, we allow the user to specify which non-cat dataset she wants to use: either plants or dogs (with any invalid input defaulting to the plant dataset).
+2. We flat the image arrays to ensure they have the shape $(n_x, m)$, where $n_x$ represents the dimension of a single image array and $m$ represents the total number of instances we have in the dataset.
+3. We then create the labels for both the cats (label $1$) and non-cats (label $0$).
+4. We append the individual datasets and labels into two unified arrays that will be stored in the database. Note the <CodeHighlighter code={`axis=0`} language="python" inline />, which is necessary to inform <GlossaryTooltip slug="glossary/python/numpy/append">np.append</GlossaryTooltip> that the operation should be performed along the first axis (rows).
+5. We then run some assertions to check that everything went as expected. The first three assertions check that the shapes of the arrays match, and the last two assertions check that all the labels are in their correct places.
+6. Finally, we create the file hosting both the dataset and the labels.
+
+Not that complicated, right? Check how the code looks like:
+
+<CodeHighlighter
+  filename={'datapreparation.py'}
+  code={`
+def build_dataset(non_cats_dataset='plants', h5_file='datasets/dataset.h5', min_dims=256, target_res=64):
+    """
+    Function to build the h5 file with the data in the correct shape.\n
+    :param non_cats_dataset: parameter to specify which dataset will be used as the non-cat dataset.
+    :param h5_file: path for the final h5 file.
+    :param min_dims: minimum required dimension for the images.
+    :param target_res: target resolution of the images.
+    """
+    # Constants used for file paths
+    cats_dir = 'datasets/cats'
+    plants_dir = 'datasets/plants'
+    dogs_dir = 'datasets/dogs'\n
+    if non_cats_dataset == 'dogs':
+        non_cats_dir = dogs_dir
+        file_ext = 'jpg'
+    else:
+        non_cats_dir = plants_dir
+        file_ext = 'png'\n
+    cats_array = load_images(cats_dir, min_dims, target_res, 'jpg')
+    non_cats_array = load_images(non_cats_dir, min_dims, target_res, file_ext)\n
+    cats_array_flatten = cats_array.reshape(cats_array.shape[0], -1)
+    non_cats_array_flatten = non_cats_array.reshape(non_cats_array.shape[0], -1)\n
+    cats_labels = np.ones((cats_array_flatten.shape[0], 1))
+    non_cats_labels = np.zeros((non_cats_array_flatten.shape[0], 1))\n
+    dataset = np.append(cats_array_flatten, non_cats_array_flatten, axis=0)
+    labels = np.append(cats_labels, non_cats_labels, axis=0)\n
+    assert dataset.shape[0] == cats_array_flatten.shape[0] + non_cats_array_flatten.shape[0]
+    assert dataset.shape[1] == cats_array_flatten.shape[1] == non_cats_array_flatten.shape[1]
+    assert labels.shape[0] == cats_labels.shape[0] + non_cats_labels.shape[0]
+    assert np.sum(labels[:cats_labels.shape[0]]) == len(cats_labels)
+    assert np.sum(labels[cats_labels.shape[0]:]) == 0\n
+    with h5py.File(h5_file, "w") as file:
+        file.create_dataset("dataset", np.shape(dataset), h5py.h5t.STD_U8BE, data=dataset)
+        file.create_dataset("labels", np.shape(labels), h5py.h5t.STD_U8BE, data=labels)
+`}
+  language="python"
+/>
+
+The output of this code will be a single <CodeHighlighter code={`dataset.h5`} language="python" inline /> file, which will contain the whole data we will use later on to train and test our model. Note that you can run this function only once and then comment it out for future runs (as long as the datasets do not change). If you want to change any of the parameters of this function to build a new version of the dataset, make sure to rerun it before performing any training on the model.
+
+# 3.3 Building our training and test datasets
+
+Once we have our dataset stored in the <CodeHighlighter code={`datasets/dataset.h5`} language="python" inline /> file, we can move forward to loading it and building the actual training and test sets. This is a crucial step in any machine learning algorithm, as there are several concerns to keep in mind when splitting the data and when using these sets not only for building but also for validating the model. Discussing these aspects is outside the scope of this article, so we will go back to them in details some other time.
+
+We will use two functions to build our training and test datasets: one to simply extract the information from the <CodeHighlighter code={`dataset.h5`} language="python" inline /> file, and another to actually split the dataset and the labels into training and test sets by following some predefined test/training ratio. The first function is fairly straightforward, and all it does it to receive a <CodeHighlighter code={`.h5`} language="python" inline /> file and extract the <CodeHighlighter code={`dataset`} language="python" inline /> and <CodeHighlighter code={`labels`} language="python" inline /> keys from the file. We perform two simple assertions to ensure that the received file contains both the datasets, but we cannot go much further at this step in terms of ensuring that the datasets contain the correct information. This is ensured by the <CodeHighlighter code={`build_dataset`} language="python" inline /> function.
+
+<CodeHighlighter
+  filename={'datapreparation.py'}
+  code={`
+def load_dataset(h5_file):
+    """
+    Helper function to load the data if the file exists.\n
+    :param h5_file: file containing the dataset and the labels.
+    :return: loaded dataset and labels.
+    """
+    with h5py.File(h5_file, 'r') as file:
+        assert file.get('dataset', None) is not None
+        assert file.get('labels', None) is not None
+        dataset = file.get('dataset')[:]
+        labels = file.get('labels')[:]\n
+    return dataset, labels
+`}
+  language="python"
+/>
+
+Once we retrieve the dataset and the labels, we can feed them as inputs to <CodeHighlighter code={`scikit`} language="python" inline />'s <CodeHighlighter code={`train_test_split`} language="python" inline /> function to randomly split the data into training and test. One very important remark: as you can see in the code below, we pass the <CodeHighlighter code={`dataset`} language="python" inline /> and the <CodeHighlighter code={`labels`} language="python" inline /> inputs separately, so it is crucial to make sure they are synchronized. Once again, we take care of this in the <CodeHighlighter code={`build_dataset`} language="python" inline /> function. Another approach would be to have a single dataset (most likely a Pandas dataframe) that is stored in the <CodeHighlighter code={`.h5`} language="python" inline /> file and has the labels stored in the last column. This may make it easier to manage labels for larger or less uniform dataset (when positive and negative instances are mixed, for example), but in our case we can use the simpler approach of storing the information separately.
+
+<CodeHighlighter
+  filename={'datapreparation.py'}
+  code={`
+def build_train_test_sets(h5_file, test_ratio, **kwargs):
+    """
+    Helper function to split the data in an h5 file into train and test sets.\n
+    :param h5_file: file containing the dataset and the labels.
+    :param test_ratio: ratio of instances in the test set.
+    :param kwargs:
+        - seed: can be used to generate predictable splits between runs.
+    :return: train and tests datasets.
+    """
+    seed = kwargs.get('seed', None)\n
+    dataset, labels = load_dataset(h5_file)\n
+    X_train, X_test, y_train, y_test = train_test_split(dataset, labels, test_size=test_ratio, random_state=seed)\n
+    return X_train, X_test, y_train, y_test
+`}
+  language="python"
+/>
+
+Once the <CodeHighlighter code={`build_train_test_sets`} language="python" inline /> is called, we have our training and test sets that can be used to actually optimize our logistic regression classifier. This is how our <CodeHighlighter code={`main.py`} language="python" inline /> file looks so far:
+
+<CodeHighlighter
+  filename={'main.py'}
+  code={`
+from datapreparation import build_dataset, build_train_test_sets\n
+# Parameters and variables
+dataset_file = 'datasets/dataset.h5'
+test_set_ratio = 0.2
+minimum_file_dimension = 256
+target_dimension = 64\n
+build_dataset('dogs', dataset_file, minimum_file_dimension, target_dimension)
+X_train, X_test, y_train, y_test = build_train_test_sets(dataset_file, test_set_ratio, seed=42)\n
+# From here on we will actually train and evaluate our model
+`}
+  language="python"
+/>
+
+I particularly prefer this approach of breaking the multiple stages of building our classifier into smaller files, since it allows us to keep our <CodeHighlighter code={`main.py`} language="python" inline /> file clean and with a clear flow of which step is being performed.
