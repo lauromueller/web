@@ -70,7 +70,7 @@ const BreadcrumbsContainer = styled.div`
 `;
 
 const formatBreadcrumb = (b: string) => {
-  const newStr = b.replace('-', ' ');
+  const newStr = b.replace(/-/g, ' ');
 
   return newStr.charAt(0).toUpperCase() + newStr.slice(1);
 };
