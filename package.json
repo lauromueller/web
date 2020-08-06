@@ -40,7 +40,7 @@
     "prismjs": "1.20.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-resize-detector": "5.0.6",
+    "react-resize-detector": "5.0.7",
     "react-tooltip": "4.2.8",
     "styled-components": "5.1.1",
     "swiper": "5.4.5",
