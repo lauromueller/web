@@ -21,7 +21,7 @@
   "dependencies": {
     "@mdx-js/mdx": "1.6.16",
     "@mdx-js/react": "1.6.16",
-    "gatsby": "2.24.49",
+    "gatsby": "2.24.50",
     "gatsby-plugin-mdx": "1.2.35",
     "gatsby-plugin-react-svg": "3.0.0",
     "gatsby-plugin-sass": "2.3.12",
