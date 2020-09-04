@@ -42,7 +42,7 @@
     "react-dom": "16.13.1",
     "react-resize-detector": "5.0.7",
     "react-tooltip": "4.2.9",
-    "styled-components": "5.1.1",
+    "styled-components": "5.2.0",
     "swiper": "5.4.5",
     "typescript": "3.9.7"
   },
