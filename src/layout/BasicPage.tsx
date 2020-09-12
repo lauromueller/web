@@ -7,7 +7,7 @@ const StyledLayout = styled.div`
   min-height: 100vh;
   max-width: 692px;
   margin: 24px auto;
-  padding: 0 16px;
+  padding: 0 8px;
 
   @media (max-width: 576px) {
     margin: 16px auto;

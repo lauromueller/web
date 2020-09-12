@@ -9,7 +9,6 @@ const outlinedStyle = css`
   border-radius: 50px;
   padding: 6px 10px;
   margin-right: 8px;
-  margin-top: 12px;
   background-color: transparent;
   color: var(--lm-color-success);
 

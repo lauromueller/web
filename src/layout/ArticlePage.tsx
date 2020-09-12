@@ -69,6 +69,14 @@ const BreadcrumbsContainer = styled.div`
   }
 `;
 
+const StyledTitle = styled.h1``;
+
+const TitleBorder = styled.div`
+  width: 30px;
+  height: 4px;
+  background-color: var(--lm-color-primary);
+`;
+
 const formatBreadcrumb = (b: string) => {
   const newStr = b.replace(/-/g, ' ');
 
@@ -100,7 +108,10 @@ const ArticlePage: FunctionComponent<any> = ({ data }) => {
     <BasicPage>
       <StyledContentWrapper>
         <Breadcrumbs field={field} area={area} title={title} />
-        <h1>{title}</h1>
+        <div>
+          <StyledTitle>{title}</StyledTitle>
+          <TitleBorder />
+        </div>
         <div className="blog-post-content">
           <MDXProvider
             components={{

@@ -20,7 +20,9 @@ const FeaturedContentText = styled.p`
   }
 `;
 
-const FeaturedTags = styled.div``;
+const FeaturedTags = styled.div`
+  margin-bottom: 20px;
+`;
 
 const FeaturedContentWrapper = styled.div`
   border-bottom: 1px solid var(--lm-color-secondary-shade);
@@ -32,12 +34,12 @@ const FeaturedContent: FunctionComponent<{ tags: string[] }> = ({
 }) => {
   return (
     <FeaturedContentWrapper>
+      <FeaturedContentText>{children}</FeaturedContentText>
       <FeaturedTags>
         {tags.map(tag => (
           <TagButton>{tag}</TagButton>
         ))}
       </FeaturedTags>
-      <FeaturedContentText>{children}</FeaturedContentText>
     </FeaturedContentWrapper>
   );
 };
