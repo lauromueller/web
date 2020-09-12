@@ -1,4 +1,11 @@
-import React, { FunctionComponent } from 'react';
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql, Link } from 'gatsby';
@@ -26,12 +33,14 @@ const StyledContentWrapper = styled.div`
   h4,
   h5,
   h6 {
-    padding: 0 1.7rem;
+    width: 90%;
+    margin-left: 10%;
   }
 
-  ol,
   ul {
-    padding: 0 1.7rem 0 4rem;
+    width: calc(90% - 3rem);
+    margin-left: 10%;
+    padding: 0 0 0 3rem;
   }
 
   @media (max-width: 768px) {
@@ -40,22 +49,28 @@ const StyledContentWrapper = styled.div`
 
   @media (max-width: 576px) {
     p,
-    h1,
     h2,
     h3,
     h4,
     h5,
     h6 {
-      padding: 0;
+      width: 100%;
+      margin-left: 0;
     }
 
-    ol,
     ul {
-      padding: 0 0 0 1.5rem;
+      width: calc(100% - 2rem);
+      margin-left: 0;
+      padding: 0 0 0 2rem;
     }
 
     margin: 32px auto;
   }
+`;
+
+const StyledContentBodyWrapper = styled.div`
+  width: 80%;
+  margin-left: 20%;
 `;
 
 const BreadcrumbsContainer = styled.div`
@@ -99,6 +114,10 @@ const Breadcrumbs: FunctionComponent<BreadcrumbsProps> = ({
   );
 };
 
+const StyledBodyContent = styled.div`
+  position: relative;
+`;
+
 const ArticlePage: FunctionComponent<any> = ({ data }) => {
   const { mdx } = data; // data.mdx holds your post data
   const { frontmatter, body } = mdx;
@@ -112,7 +131,7 @@ const ArticlePage: FunctionComponent<any> = ({ data }) => {
           <StyledTitle>{title}</StyledTitle>
           <TitleBorder />
         </div>
-        <div className="blog-post-content">
+        <StyledBodyContent className="blog-post-content">
           <MDXProvider
             components={{
               GlossaryTooltip,
@@ -123,7 +142,7 @@ const ArticlePage: FunctionComponent<any> = ({ data }) => {
           >
             <MDXRenderer>{body}</MDXRenderer>
           </MDXProvider>
-        </div>
+        </StyledBodyContent>
       </StyledContentWrapper>
     </BasicPage>
   );

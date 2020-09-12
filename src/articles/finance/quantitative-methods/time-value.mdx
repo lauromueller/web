@@ -27,6 +27,46 @@ Understanding how to calculate the **time value of money** requires familiarity 
 
 ## The concept of interest rates
 
-The starting point for the discussion about **time value of money** is the concept of **interest rates**. If someone approached you and offered an investment opportunity that required you to pay $$ \$1.000,00 $$ today to receive $$ \$1.000,00 $$ one year from now, would you go for it? Probably not. After all, freezing your money for an entire year without any form of compensation does not bring any benefit to you. You would be better off by keeping the money in your account and spending it gradually over the period, with as much flexibility over the expenditure as you want (and as $$ \$1.000,00 $$ allow you to buy). The fact that money is worth different amounts today and one year from now leads to the need for ways of discounting or valuing money over time. How much would you require from your investment one year from now so that you are willing to freeze the $$ \$1.000,00 $$ today? $$ \$1.020,00 $$? $$ \$1.050,00 $$?
+The starting point for the discussion about **time value of money** is the concept of **interest rates**. If someone approached you and offered an investment opportunity that required you to pay $ \$1.000,00 $ today to receive $ \$1.000,00 $ one year from now, would you go for it? Probably not. After all, freezing your money for an entire year without any form of compensation does not bring any benefit to you. You would be better off by keeping the money in your account and spending it gradually over the period, with as much flexibility over the expenditure as you want (and as $ \$1.000,00 $ allow you to buy). The fact that money is worth different amounts today and one year from now leads to the need for ways of discounting or valuing money over time. How much would you require from your investment one year from now so that you are willing to freeze the $ \$1.000,00 $ today? $ \$1.020,00 $? $ \$1.050,00 $?
 
-The fact that there is a certain value $$ (\$1.000,00 + x) $$ that would make you willing to invest your money instead of keeping it for yourself leads to the idea that we need to somehow adjust future cash flows to the present when considering how we allocate our money.
+The fact that there is a certain value $ (\$1.000,00 + x) $ that would make you willing to invest your money instead of keeping it for yourself leads to the idea that we need to somehow adjust future cash flows to the present when considering how we allocate our money. This relationship is modelled by what we denote the **interest rate** $ r $. Suppose you would require $ \$1.050,00 $ in one year from now in order to invest your money. Then the amount $ x $ that needs to paid on top of your original investment is $ \$50,00 $. In percentage terms, this is equivalent to $ 5.00\% $ of the initial sum.
+
+We can generalize the concept of interest rate to represent the rate at which the initial sum must grow between two periods $ t $ and $ t+1 $ so that we opt for the investment. Writing it in mathematical terms, we obtain:
+
+$$
+r_{t, t+1} = \dfrac{Y_{t+1} - Y_t}{Y_t}
+$$
+
+Where $ r_{t, t+1} $ represents the interest rate between periods $ t $ and $ t+1 $, $ Y_{t+1} $ represents the sum received at time $ t+1 $, and $ Y_t $ represents the sum paid in time $ t $.
+
+While the formula itself is relatively simple, it can be used and interpreted in several ways. For example, the delta time may be one year, one quarter, one month, one day, one second, or an infinitely small time window. The next section discusses in more details the different interpretations of the interest rate.
+
+### Interpreting interest rates
+
+There are three main ways of thinking about interest rates.
+
+The first one is to think of interest rates as **required rates of return** of investments. Every investment has a certain degree of risk, and we investors require some remuneration for bearing this risk. When you invest in a project, you are basically lending money to the company which will execute the project. If the project execution fails or does not bring as much return as expected, you are likely to earn less or even lose money as a result of the operation. The riskier a project is, the more rewards it must bring to you because the higher the chances are that the project may go wrong.
+
+The second way of thinking about interest rates is in terms of **discount rates**. Discount rates refer to how much we should discount future cash flows to find their value today. For example, if your bank offers a security which promises a single cash flow of $$ \$10.000,00 $$ 1 year from now, how much should you pay for it? In other words, what is the interest rate that, when applied to the sum payable today, leads to the future cash flow of $$ \$10.000,00 $$?
+
+The third way is to think of interest rates as the **opportunity cost** of placing money somewhere and freezing it for some time. When you decide for investment A, you automatically forego all the other things you could do with the money you invested. If there is an investment opportunity that gives you $$ 10\% $$ return over the same period with the same degree of risk as the investment you have chosen, you should require at least $$ 10\% $$ return from your investment. In more general terms, the **opportunity cost** can be seen as the value that would be derived from the best alternative to the investment you are choosing now. This should then be the lower bound for the interest rate you require from your investment.
+
+### The components of interest rates
+
+As already mentioned, investment opportunities have different degrees of risk. But what exactly do we mean when we say "risk"? We can decompose interest rates into five components: the real risk-free interest rate, plus four different types of risk that we, as investors, have to bear.
+
+- The **real risk-free interest rate** $$r_f$$ rate is the return on a completely risk-free investment assuming no inflation. One common choice is the interest rate paid by government bonds (for example, US T-bills) with a time to maturity equivalent to the duration of our investment.
+- The **inflation premium** $$r_i$$ refers to the expected total inflation during the period of the investment. Since inflation reduces the purchasing power of a unit of currency, it must be considered when determining the interest rates of investments. One important aspect of inflation is that it is not unique to individual investments. Inflation may vary between countries, currencies, and industries (for example, the price of real-estate may go up more than the price of food), but it affects similar investments similarly. That said, the sum of $$ r_f $$ and $$ r_i $$ is normally called the **nominal risk-free interest rate**.
+- The **default risk premium** $$r_d$$ refers to the possibility that borrower will not pay us back the entire promised amount within the specified time horizon. This can refer to either one final payment to be made at the end of the investment horizon, or to several intermediary payments to be made during the lifetime of the investment.
+- The **liquidity premium** $$r_l$$ refers to the risk of losing money in case the investor needs to convert the investment into cash quickly. If the papers are traded infrequently, there are not many buyers available at any point in time, and the laws of supply and demand indicate that we will probably have to decrease the fair price of our investment in order to find a buyer. If the papers are traded frequently (US T-bills would again be a good example), finding a buyer willing to pay the fair price is not very difficult, so the liquidity premium is lower.
+- The **maturity premium** $$r_m$$ refers to the higher risk of changes in the market value of a debt with a longer time to maturity should the interest rates vary within the maturity period. Consider, for example, that we purchase a 10-year paper at a time when the nominal risk-free interest rate is $$ 5\% \; p.a.$$ If, 2 years after we purchase the paper, the nominal risk-free interest rate falls to $$ 3\% \; p.a.$$, the market value of our paper will decrease. While this would not impact the returns should we keep the paper until maturity, if we decide to sell it in advance we will have to sell it for a lower value.
+
+We can then compute the total risk $$ r $$ to be the sum of the real risk-free interest rate and all the four types of risk:
+
+$$
+r = r_f + r_i + r_d + r_l + r_m
+$$
+
+Understanding the different components of risk is very relevant when performing a detailed analysis of the risk and return of an investment, but for now we will assume that the interest rates taken in our calculations already fairly entail the different components we have discussed above. Let's then move on to the discussion of how to calculate the future and present values of cash flows.
+
+## The future value of a single cash flow

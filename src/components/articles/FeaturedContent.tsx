@@ -13,6 +13,8 @@ const FeaturedContentText = styled.p`
   line-height: 2rem;
   padding: unset !important;
   letter-spacing: 0.01rem !important;
+  width: 100% !important;
+  margin-left: unset !important;
 
   @media (max-width: 576px) {
     font-size: 1.125rem;

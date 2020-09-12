@@ -138,6 +138,10 @@ blockquote {
   }
 }
 
+li {
+  list-style-type: square;
+}
+
 .dropcap :not(li) {
   color: var(--lm-color-dark);
   font-family: 'PT Sans', sans-serif;
