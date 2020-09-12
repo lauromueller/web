@@ -1,20 +1,26 @@
 import React, { FunctionComponent } from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 import { BasicPage } from '.';
 import {
   GlossaryTooltip,
   CodeHighlighter,
+  FeaturedContent,
   ImageCard,
 } from '../components/articles';
 
+export type BreadcrumbsProps = {
+  field: string;
+  area: string;
+  title: string;
+};
+
 const StyledContentWrapper = styled.div`
-  margin: 80px auto;
+  margin: 56px auto;
 
   p,
-  h1,
   h2,
   h3,
   h4,
@@ -23,8 +29,13 @@ const StyledContentWrapper = styled.div`
     padding: 0 1.7rem;
   }
 
+  ol,
+  ul {
+    padding: 0 1.7rem 0 4rem;
+  }
+
   @media (max-width: 768px) {
-    margin: 40px auto;
+    margin: 32px auto;
   }
 
   @media (max-width: 576px) {
@@ -38,23 +49,77 @@ const StyledContentWrapper = styled.div`
       padding: 0;
     }
 
-    margin: 16px auto;
+    ol,
+    ul {
+      padding: 0 0 0 1.5rem;
+    }
+
+    margin: 32px auto;
   }
 `;
+
+const BreadcrumbsContainer = styled.div`
+  color: var(--lm-color-medium);
+  font-size: 0.75rem;
+  margin-bottom: 24px;
+  display: inline-block;
+
+  @media (max-width: 576px) {
+    margin-bottom: 0;
+  }
+`;
+
+const StyledTitle = styled.h1``;
+
+const TitleBorder = styled.div`
+  width: 30px;
+  height: 4px;
+  background-color: var(--lm-color-primary);
+`;
+
+const formatBreadcrumb = (b: string) => {
+  const newStr = b.replace(/-/g, ' ');
+
+  return newStr.charAt(0).toUpperCase() + newStr.slice(1);
+};
+
+const Breadcrumbs: FunctionComponent<BreadcrumbsProps> = ({
+  field,
+  area,
+  title,
+}) => {
+  return (
+    <BreadcrumbsContainer>
+      <Link to={`/${field}`}>{formatBreadcrumb(field)}</Link>
+      {' > '}
+      <Link to={`/${field}/${area}`}>{formatBreadcrumb(area)}</Link>
+      {' > '}
+      {title}
+    </BreadcrumbsContainer>
+  );
+};
 
 const ArticlePage: FunctionComponent<any> = ({ data }) => {
   const { mdx } = data; // data.mdx holds your post data
   const { frontmatter, body } = mdx;
-
-  console.log(frontmatter.authors);
+  const { field, area, title } = frontmatter;
 
   return (
     <BasicPage>
       <StyledContentWrapper>
-        <h1>{frontmatter.title}</h1>
+        <Breadcrumbs field={field} area={area} title={title} />
+        <div>
+          <StyledTitle>{title}</StyledTitle>
+          <TitleBorder />
+        </div>
         <div className="blog-post-content">
           <MDXProvider
-            components={{ GlossaryTooltip, ImageCard, CodeHighlighter }}
+            components={{
+              GlossaryTooltip,
+              ImageCard,
+              CodeHighlighter,
+              FeaturedContent,
+            }}
           >
             <MDXRenderer>{body}</MDXRenderer>
           </MDXProvider>
@@ -78,6 +143,8 @@ export const pageQuery = graphql`
       body
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
+        field
+        area
         slug
         title
         authors {

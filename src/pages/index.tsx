@@ -15,7 +15,8 @@ const Index = () => {
   return (
     <BasicPage>
       <FeaturedText>
-        On Software Engineering, AI, Analytics, and Business.
+        On Financial Analysis, Artificial Intelligence, and Software
+        Engineering.
       </FeaturedText>
       <CategoryButtons />
       <AuthorIntroduction />

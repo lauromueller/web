@@ -34,10 +34,6 @@ const StyledIndicator = styled.div`
 const StyledExcerpt = styled.p`
   margin-top: 0.67rem;
   margin-bottom: 0;
-
-  p {
-    margin-bottom: 0.5rem;
-  }
 `;
 
 const StyledIcon = styled(props => <span {...props} />)`

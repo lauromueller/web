@@ -6,6 +6,7 @@ import { CopyCodeButton } from '../ui/buttons';
 export type CodeHighlighterProps = {
   inline?: boolean;
   code: string;
+  filename?: string;
   language: Language;
 };
 
@@ -22,7 +23,7 @@ const StyledMetadataContainer = styled.div`
 const StyledLanguageName = styled.div`
   font-family: 'PT Sans', sans-serif;
   letter-spacing: 0.05em;
-  margin-top: -0.8em;
+  margin-top: -0.6em;
   margin-left: 1em;
   background-color: var(--lm-color-dark);
   border-radius: 0 0 8px 8px;
@@ -52,6 +53,7 @@ const ButtonTextareaContainer = styled.div`
 
 const CodeHighlighter: FunctionComponent<CodeHighlighterProps> = ({
   code,
+  filename,
   inline = false,
   language,
 }) => {
@@ -98,7 +100,9 @@ const CodeHighlighter: FunctionComponent<CodeHighlighterProps> = ({
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <StyledPre className={className} style={style}>
           <StyledMetadataContainer>
-            <StyledLanguageName>{language}</StyledLanguageName>
+            <StyledLanguageName>
+              {filename ? `${language}: ${filename}` : language}
+            </StyledLanguageName>
             <ButtonTextareaContainer>
               <CopyCodeButton
                 onClick={e => {
