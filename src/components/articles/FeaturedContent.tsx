@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { TagButton } from '../ui/buttons';
 
 export type FeaturedContentProps = {
-  tags: string[];
+  tags?: string[];
 };
 
 const FeaturedContentText = styled.p`
@@ -37,11 +37,13 @@ const FeaturedContent: FunctionComponent<{ tags: string[] }> = ({
   return (
     <FeaturedContentWrapper>
       <FeaturedContentText>{children}</FeaturedContentText>
-      <FeaturedTags>
-        {tags.map(tag => (
-          <TagButton>{tag}</TagButton>
-        ))}
-      </FeaturedTags>
+      {tags && (
+        <FeaturedTags>
+          {tags.map(tag => (
+            <TagButton>{tag}</TagButton>
+          ))}
+        </FeaturedTags>
+      )}
     </FeaturedContentWrapper>
   );
 };

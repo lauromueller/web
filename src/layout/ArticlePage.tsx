@@ -12,10 +12,12 @@ import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 import { BasicPage } from '.';
 import {
-  GlossaryTooltip,
   CodeHighlighter,
+  Definition,
   FeaturedContent,
+  GlossaryTooltip,
   ImageCard,
+  MainContent,
 } from '../components/articles';
 
 export type BreadcrumbsProps = {
@@ -27,50 +29,13 @@ export type BreadcrumbsProps = {
 const StyledContentWrapper = styled.div`
   margin: 56px auto;
 
-  p,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    width: 90%;
-    margin-left: 10%;
-  }
-
-  ul {
-    width: calc(90% - 3rem);
-    margin-left: 10%;
-    padding: 0 0 0 3rem;
-  }
-
   @media (max-width: 768px) {
     margin: 32px auto;
   }
 
   @media (max-width: 576px) {
-    p,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      width: 100%;
-      margin-left: 0;
-    }
-
-    ul {
-      width: calc(100% - 2rem);
-      margin-left: 0;
-      padding: 0 0 0 2rem;
-    }
-
     margin: 32px auto;
   }
-`;
-
-const StyledContentBodyWrapper = styled.div`
-  width: 80%;
-  margin-left: 20%;
 `;
 
 const BreadcrumbsContainer = styled.div`
@@ -134,10 +99,12 @@ const ArticlePage: FunctionComponent<any> = ({ data }) => {
         <StyledBodyContent className="blog-post-content">
           <MDXProvider
             components={{
+              CodeHighlighter,
+              Definition,
+              FeaturedContent,
               GlossaryTooltip,
               ImageCard,
-              CodeHighlighter,
-              FeaturedContent,
+              MainContent,
             }}
           >
             <MDXRenderer>{body}</MDXRenderer>

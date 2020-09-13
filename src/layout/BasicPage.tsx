@@ -5,7 +5,7 @@ import { MainHeader } from '../components/ui';
 const StyledLayout = styled.div`
   background: #fff !important;
   min-height: 100vh;
-  max-width: 692px;
+  max-width: 900px;
   margin: 24px auto;
   padding: 0 8px;
 

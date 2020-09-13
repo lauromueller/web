@@ -9,7 +9,9 @@ draft: False
 tags: []
 ---
 
-<FeaturedContent tags={['test', 'test2']}>
+export const testOne = 'test-one';
+
+<FeaturedContent>
   One of the main concerns of investors and financial analysts when placing
   money in any security is to determine how much the future stream of cash flows
   coming from that security is worth. The time value of money is one of the
@@ -22,6 +24,8 @@ tags: []
   interest rates to calculate the future and the present value of money.
 </FeaturedContent>
 
+<MainContent articleIdentifier={testOne}>
+
 [WRITE SOME INTRODUCTION?]
 Understanding how to calculate the **time value of money** requires familiarity with a couple of concepts, among which **interest rates** and their interpretation are specially important.
 
@@ -33,9 +37,15 @@ The fact that there is a certain value $ (\$1.000,00 + x) $ that would make you 
 
 We can generalize the concept of interest rate to represent the rate at which the initial sum must grow between two periods $ t $ and $ t+1 $ so that we opt for the investment. Writing it in mathematical terms, we obtain:
 
+<Definition title="Definition 1: Interest rate between two periods">
+
+The interest rate between two periods $$ t $$ and $$ t + 1 $$ is given by:
+
 $$
 r_{t, t+1} = \dfrac{Y_{t+1} - Y_t}{Y_t}
 $$
+
+</Definition>
 
 Where $ r_{t, t+1} $ represents the interest rate between periods $ t $ and $ t+1 $, $ Y_{t+1} $ represents the sum received at time $ t+1 $, and $ Y_t $ represents the sum paid in time $ t $.
 
@@ -70,3 +80,25 @@ $$
 Understanding the different components of risk is very relevant when performing a detailed analysis of the risk and return of an investment, but for now we will assume that the interest rates taken in our calculations already fairly entail the different components we have discussed above. Let's then move on to the discussion of how to calculate the future and present values of cash flows.
 
 ## The future value of a single cash flow
+
+In this section we formalize the idea of calculating the future value of a present cash flow, as well as the present value of a future cash flow. We will use $$ Y $$ to denote the initial payment made as an investment, $$ FV $$ to denote the future value of a cash flow, $$ PV $$ to denote the present value of a cash flow, $$ r $$ to denote the interest rate, and $$ N $$ to denote the periods over which the interest will compound.
+
+The calculations are quite straightforward for a single period. If $$ N=1 $$, at the end of the single period our initial investment will be worth $$ FV_{N=1} = Y(1+r) $$.
+
+If we generalize this for $$ n $$ periods, the future value of our present investment is given by:
+
+$$
+FV_{N=n} = Y(1+r)^n
+$$
+
+One important aspect of this relation is that the periods and the interest rate must use consistent units. For example, if we have the period in years, the interest rate must also be in years. If the period is converted to months, we should use a monthly interest rate. Since the interest rate compounds (gets multiplied) over time, a simple arithmetic division is not enough to convert between time units.
+
+### Handling different compounding frequencies
+
+Let's discuss in more details how we can handle different frequencies for interest rate compounding. It is quite common to find investments that quote some yearly interest rate but state that the interest rate is compounded quarterly or monthly. The annual interest rate is often called **stated annual interest rate** or **quoted interest rate**, and it **does not** represent the actual interest rate that will be paid on your investment.
+
+For us to figure out the actual rate we have to use and how many times we should compound the interest, we should adjust the stated annual interest rate. The periodic rate is
+
+Notice that this is not the same as converting between effective annual and effective monthly interest rates.
+
+</MainContent>
