@@ -1,8 +1,8 @@
 import React, {
   FunctionComponent,
+  RefObject,
   useCallback,
   useEffect,
-  useLayoutEffect,
   useRef,
   useState,
 } from 'react';
@@ -10,14 +10,15 @@ import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
+import { withResizeDetector } from 'react-resize-detector';
 import { BasicPage } from '.';
 import {
+  ArticleSidebar,
   CodeHighlighter,
   Definition,
   FeaturedContent,
   GlossaryTooltip,
   ImageCard,
-  MainContent,
 } from '../components/articles';
 
 export type BreadcrumbsProps = {
@@ -28,6 +29,7 @@ export type BreadcrumbsProps = {
 
 const StyledContentWrapper = styled.div`
   margin: 56px auto;
+  width: 100%;
 
   @media (max-width: 768px) {
     margin: 32px auto;
@@ -80,10 +82,39 @@ const Breadcrumbs: FunctionComponent<BreadcrumbsProps> = ({
 };
 
 const StyledBodyContent = styled.div`
-  position: relative;
+  max-width: 692px;
 `;
 
-const ArticlePage: FunctionComponent<any> = ({ data }) => {
+const StyledMainContentWrapper = styled.div`
+  position: relative;
+  display: flex;
+  max-width: 692px;
+`;
+
+const ArticlePage: FunctionComponent<any> = ({ data, height, width }) => {
+  console.log(height, width);
+  const [isOverTheTop, setIsOverTheTop] = useState<boolean>(false);
+  const mainContentRef = useRef<HTMLDivElement>();
+
+  const onScroll = useCallback(() => {
+    if (mainContentRef.current) {
+      const tempIsOver = mainContentRef.current.getBoundingClientRect().y < 0;
+      if (isOverTheTop !== tempIsOver) {
+        setIsOverTheTop(tempIsOver);
+      }
+    }
+  }, [mainContentRef, isOverTheTop]);
+
+  useEffect(() => {
+    if (mainContentRef.current) {
+      window.addEventListener('scroll', onScroll);
+
+      return () => window.removeEventListener('scroll', onScroll);
+    }
+
+    return () => 1;
+  }, [mainContentRef, isOverTheTop, setIsOverTheTop, onScroll]);
+
   const { mdx } = data; // data.mdx holds your post data
   const { frontmatter, body } = mdx;
   const { field, area, title } = frontmatter;
@@ -92,30 +123,33 @@ const ArticlePage: FunctionComponent<any> = ({ data }) => {
     <BasicPage>
       <StyledContentWrapper>
         <Breadcrumbs field={field} area={area} title={title} />
-        <div>
-          <StyledTitle>{title}</StyledTitle>
-          <TitleBorder />
-        </div>
-        <StyledBodyContent className="blog-post-content">
-          <MDXProvider
-            components={{
-              CodeHighlighter,
-              Definition,
-              FeaturedContent,
-              GlossaryTooltip,
-              ImageCard,
-              MainContent,
-            }}
-          >
-            <MDXRenderer>{body}</MDXRenderer>
-          </MDXProvider>
-        </StyledBodyContent>
+        <StyledMainContentWrapper
+          ref={mainContentRef as RefObject<HTMLDivElement>}
+        >
+          <StyledBodyContent className="blog-post-content">
+            <div>
+              <StyledTitle>{title}</StyledTitle>
+              <TitleBorder />
+            </div>
+            <MDXProvider
+              components={{
+                CodeHighlighter,
+                Definition,
+                FeaturedContent,
+                GlossaryTooltip,
+                ImageCard,
+              }}
+            >
+              <MDXRenderer>{body}</MDXRenderer>
+            </MDXProvider>
+          </StyledBodyContent>
+        </StyledMainContentWrapper>
       </StyledContentWrapper>
     </BasicPage>
   );
 };
 
-export default ArticlePage;
+export default withResizeDetector(ArticlePage);
 
 export const pageQuery = graphql`
   query($slug: String!, $area: String!, $field: String) {
@@ -127,6 +161,10 @@ export const pageQuery = graphql`
       }
     ) {
       body
+      headings {
+        depth
+        value
+      }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         field

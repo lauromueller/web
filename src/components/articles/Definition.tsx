@@ -8,7 +8,7 @@ export type DefinitionProps = {
 const StyledDefinitionWrapper = styled.div`
   background-color: var(--lm-color-light);
   border-left: 8px solid var(--lm-color-tertiary);
-  margin: 32px 0 32px 32px;
+  margin: 32px 0;
 `;
 
 const StyledDefinitionTitle = styled.div`

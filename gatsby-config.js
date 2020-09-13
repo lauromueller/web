@@ -21,6 +21,7 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.md`, `.mdx`],
+        remarkPlugins: [require(`remark-slug`)],
         gatsbyRemarkPlugins: [
           `gatsby-remark-dropcap`,
           {

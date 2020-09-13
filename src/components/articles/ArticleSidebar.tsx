@@ -8,22 +8,28 @@ import React, {
   useState,
 } from 'react';
 import styled, { css } from 'styled-components';
+import { TableOfContents } from './Sidebar';
 
 export type ArticleSidebarProps = {
   isMainContentOverTheTop: boolean;
+  headings: any;
 };
 
 const StyledArticleSidebar = styled.div<{
   isOverTheTop: boolean;
   offsetLeft: number;
 }>`
-  width: 300px;
+  width: 350px;
   ${({ isOverTheTop, offsetLeft }) => css`
     position: ${isOverTheTop ? 'fixed' : 'absolute'};
     ${isOverTheTop ? `left: ${offsetLeft}px;` : 'right: 0;'}
   `}
 
   top: 16px;
+
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `;
 
 const StyledSidebarContent = styled.div`
@@ -31,20 +37,9 @@ const StyledSidebarContent = styled.div`
   margin-top: 8px;
 `;
 
-const StyledTOC = styled.div`
-  border: 1px solid var(--lm-color-primary);
-  padding: 16px;
-  margin-bottom: 16px;
-`;
-
-const StyledRelatedArticles = styled.div`
-  border: 1px solid var(--lm-color-tertiary);
-  padding: 16px;
-  margin-bottom: 16px;
-`;
-
 const ArticleSidebar: FunctionComponent<ArticleSidebarProps> = ({
   isMainContentOverTheTop,
+  headings,
 }) => {
   const [offsetLeft, setOffsetLeft] = useState<number>(0);
   const sidebarRef = useRef<HTMLDivElement>(null);
@@ -61,10 +56,7 @@ const ArticleSidebar: FunctionComponent<ArticleSidebarProps> = ({
       isOverTheTop={isMainContentOverTheTop}
       offsetLeft={offsetLeft}
     >
-      <StyledSidebarContent>
-        <StyledTOC>Test</StyledTOC>
-        <StyledRelatedArticles>Articles</StyledRelatedArticles>
-      </StyledSidebarContent>
+      <StyledSidebarContent />
     </StyledArticleSidebar>
   );
 };
