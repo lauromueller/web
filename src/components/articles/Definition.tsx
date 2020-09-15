@@ -18,7 +18,7 @@ const StyledDefinitionTitle = styled.div`
 `;
 
 const StyledDefinitionContent = styled.div`
-  padding: 0 16px 32px 16px !important;
+  padding: 32px 16px !important;
 
   & .katex-display {
     margin: 0 !important;
