@@ -109,9 +109,7 @@ If we consider an example where an initial amount of $$ Y = \$ 1.000,00 $$ is in
 
 $$
 FV_{N=1} = \$ 1.000{,}00 \left( 1 + \dfrac{0.1}{12} \right) ^{12} \newline
-\;\newline
 FV_{N=1} = \$ 1.000{,}00 \left( 1.008333 \right) ^{12} \newline
-\;\newline
 FV_{N=1} = \$ 1.104{,}71
 $$
 
@@ -141,7 +139,6 @@ Coming back to our previous example, if we were to consider the same investment 
 
 $$
 FV_{N=1} = \$ 1.000{,}00 e^{0.1} \newline
-\;\newline
 FV_{N=1} = \$ 1.105{,}17
 $$
 
@@ -151,4 +148,26 @@ The final sum of continuous compounding is slightly higher than the sum of discr
 
 ## The future value of multiple cash flows
 
-We are now able to determine the future value of a single cash flow, and this can be easily extended for a series of cash flows. Suppose that we decide to invest $$ \$ 1.000,00 $$ every month in an application that pays an interest rate of $$ 1\% $$ per month. How much would we have at the end of $$ 1 $$ year?
+We are now able to determine the future value of a single cash flow, and this can be easily extended for a series of cash flows. Suppose that we decide to invest $$ \$ 1.000,00 $$ every month in an application that pays an interest rate of $$ 1\% $$ per month at the end of each month. How much would we have at the end of $$ 12 $$ months?
+
+<Example title="Example XX: Compounding over 12 months" alignEquationsLeft={true}>
+
+To state the problem more formally, let's define each of the variables of our formula. Remember, we are interested in calculating how much money we will have at the end of a $$ 12 $$-month investment with monthly contributions of $$ \$ 1.000,00 $$.
+
+$$
+Y = \$ 1.000,00 \newline
+r_s = 0.1\newline
+N = 12
+$$
+
+If we stop to think carefully, we know that our initial application $$ Y $$ at time $$ t = 0 $$ will collect interest from the first month on. In other words, it will collect interest over the entire $$ 12 $$ months of our application. For the sake of clarity, let me clarify that I will assume our periods vary from $$ 0 $$ to $$ 11 $$. It could also be from $$ 1 $$ to $$ 12 $$, it doesn't really matter. For the amount that is deposited in the second period ($$ t = 1 $$), interest will be collected over $$ 11 $$ months rather than the full period. In other words, each monthly deposit further into the future will collect interest over a shorter period. At the end of $$ 12 $$ months we will have the following:
+
+</Example>
+
+<CodeHighlighter
+  code={`
+def test_function():
+    return "Hello"`}
+  language="python"
+  filename="test.py"
+/>

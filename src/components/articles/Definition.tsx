@@ -12,9 +12,10 @@ const StyledDefinitionWrapper = styled.div`
 `;
 
 const StyledDefinitionTitle = styled.div`
-  background-color: var(--lm-color-light-shade);
-  padding: 10px !important;
+  background-color: var(--lm-color-tertiary);
+  padding: 10px 2px !important;
   font-weight: 500;
+  color: var(--lm-color-light);
 `;
 
 const StyledDefinitionContent = styled.div`
