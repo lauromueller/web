@@ -160,9 +160,32 @@ r_s = 0.1\newline
 N = 12
 $$
 
-If we stop to think carefully, we know that our initial application $$ Y $$ at time $$ t = 0 $$ will collect interest from the first month on. In other words, it will collect interest over the entire $$ 12 $$ months of our application. For the sake of clarity, let me clarify that I will assume our periods vary from $$ 0 $$ to $$ 11 $$. It could also be from $$ 1 $$ to $$ 12 $$, it doesn't really matter. For the amount that is deposited in the second period ($$ t = 1 $$), interest will be collected over $$ 11 $$ months rather than the full period. In other words, each monthly deposit further into the future will collect interest over a shorter period. At the end of $$ 12 $$ months we will have the following:
+We know that our initial application $$ Y $$ at time $$ t = 1 $$ will collect interest right from the beginning. In other words, it will collect interest over $$ 11 $$ months of our application. For this example, I will assume our periods vary from $$ 1 $$ to $$ 12 $$. As a consequence, we have $$ 11 $$ "in-between" periods. For us to better understand this idea, let's quickly consider a 3-period example. Have a look at the picture below:
+
+![Compounding payments over three periods](./assets/time-value-3.png)
+
+Continuing with our example, for the amount that is deposited in the second period ($$ t = 2 $$), interest will be collected over $$ 11 $$ months rather than the full period. In other words, each monthly deposit further into the future will collect interest over a shorter period. At the end of $$ 12 $$ months we will have the following:
+
+$$
+FV_{N=12}^{Y_0} = \$ 1.000,00 (1.1)^{12}\newline
+FV_{N=11}^{Y_1} = \$ 1.000,00 (1.1)^{11}\newline
+FV_{N=10}^{Y_2} = \$ 1.000,00 (1.1)^{10}\newline
+...\newline
+FV_{N=2}^{Y_{10}} = \$ 1.000,00 (1.1)^{2}\newline
+FV_{N=1}^{Y_{11}} = \$ 1.000,00 (1.1) \newline
+$$
+
+Our final value is then given by the sum of all these values:
+
+$$
+FV = \sum_{i=0}^{11} FV_{N=12-i}^{Y_i}\newline
+FV = \sum_{i=0}^{11} \$ 1.000,00 (1.1)^{i+1}\newline
+FV = \sum_{i=0}^{11} \$ 1.000,00 (1.1)^{i+1}\newline
+$$
 
 </Example>
+
+### Ordinary annuities
 
 <CodeHighlighter
   code={`

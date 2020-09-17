@@ -33,6 +33,10 @@ const StyledExampleContent = styled.div<ExampleStyleProps>`
     margin: 0 !important;
   }
 
+  .gatsby-resp-image-wrapper {
+    margin: 0 !important;
+  }
+
   ${({ alignEquationsLeft }): FlattenSimpleInterpolation =>
     alignEquationsLeft
       ? css`
