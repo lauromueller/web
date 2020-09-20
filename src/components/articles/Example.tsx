@@ -29,18 +29,19 @@ const StyledExampleContent = styled.div<ExampleStyleProps>`
     margin-top: 0 !important;
   }
 
-  & .katex-display {
+  .katex-display {
     margin: 0 !important;
   }
 
   .gatsby-resp-image-wrapper {
-    margin: 0 !important;
+    width: 95% !important;
+    margin: 16px auto !important;
   }
 
   ${({ alignEquationsLeft }): FlattenSimpleInterpolation =>
     alignEquationsLeft
       ? css`
-          & .katex-display > .katex > .katex-html {
+          .katex-display > .katex > .katex-html {
             display: block;
             text-align: left !important;
             white-space: nowrap;
@@ -52,6 +53,13 @@ const StyledExampleContent = styled.div<ExampleStyleProps>`
           }
         `
       : css``}
+
+  @media (max-width: 576px) {
+    .gatsby-resp-image-wrapper {
+      width: 100% !important;
+      margin: 16px auto !important;
+    }
+  }
 `;
 
 const Example: FunctionComponent<ExampleProps> = ({

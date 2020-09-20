@@ -162,30 +162,52 @@ $$
 
 We know that our initial application $$ Y $$ at time $$ t = 1 $$ will collect interest right from the beginning. In other words, it will collect interest over $$ 11 $$ months of our application. For this example, I will assume our periods vary from $$ 1 $$ to $$ 12 $$. As a consequence, we have $$ 11 $$ "in-between" periods. For us to better understand this idea, let's quickly consider a 3-period example. Have a look at the picture below:
 
-![Compounding payments over three periods](./assets/time-value-3.png)
+<img src="./assets/time-value-3.png" />
 
-Continuing with our example, for the amount that is deposited in the second period ($$ t = 2 $$), interest will be collected over $$ 11 $$ months rather than the full period. In other words, each monthly deposit further into the future will collect interest over a shorter period. At the end of $$ 12 $$ months we will have the following:
+As you can see, the fact that we have three periods leads to the first deposit compounding over two period deltas, the second compounding over one period delta, and the third compounding over zero period deltas. If we take this reasoning and apply to our current calculations, we will conclude that the amount deposited at $$ t_1 $$ will compound over 11 periods, the amount from $$ t_2 $$ over 10 periods, and so on. The amount at $$ t_12 $$ will compound over zero periods (in other words, we simply add the unchanged amount to our final sum).
 
 $$
-FV_{N=12}^{Y_0} = \$ 1.000,00 (1.1)^{12}\newline
-FV_{N=11}^{Y_1} = \$ 1.000,00 (1.1)^{11}\newline
-FV_{N=10}^{Y_2} = \$ 1.000,00 (1.1)^{10}\newline
+FV_{N=11}^{Y_1} = \$ 1.000{,}00 (1.1)^{11}\newline
+FV_{N=10}^{Y_2} = \$ 1.000{,}00 (1.1)^{10}\newline
+FV_{N=9}^{Y_3} = \$ 1.000{,}00 (1.1)^{9}\newline
 ...\newline
-FV_{N=2}^{Y_{10}} = \$ 1.000,00 (1.1)^{2}\newline
-FV_{N=1}^{Y_{11}} = \$ 1.000,00 (1.1) \newline
+FV_{N=1}^{Y_{11}} = \$ 1.000{,}00 (1.1)^{1}\newline
+FV_{N=0}^{Y_{12}} = \$ 1.000{,}00 \newline
 $$
 
 Our final value is then given by the sum of all these values:
 
 $$
-FV = \sum_{i=0}^{11} FV_{N=12-i}^{Y_i}\newline
-FV = \sum_{i=0}^{11} \$ 1.000,00 (1.1)^{i+1}\newline
-FV = \sum_{i=0}^{11} \$ 1.000,00 (1.1)^{i+1}\newline
+FV = \sum_{i=1}^{12} FV_{N=12-i}^{Y_i}\newline
+FV = \sum_{i=1}^{12} \$ 1.000{,}00 (1.1)^{i-1}\newline
+FV = \$ 21.384{,}28
 $$
+
+In the end of 12 months, we will have accumulated a total of $$ \$ 21.384{,}28 $$, which is substantially higher than if we had just collected $$ \$ 1.000{,}00 $$ per month without any interest.
 
 </Example>
 
 ### Ordinary annuities
+
+The short example above shows how compound interest can lead to substantial increases on our wealth if we invest our money early. The example also served to illustrate the basic concept behind **ordinary annuities**.
+
+<Definition title="Definition XX: Ordinary annuity">
+
+An ordinary annuity is a series of equal cash flows $$ A $$, which are incurred over equally spaced time intervals amounting to a total of $$ N $$ periods. The future value of an annuity is given by:
+
+$$
+FV_{N=N} = A \left( \dfrac{(1+r)^{N} - 1}{r} \right)
+$$
+
+Which corresponds to the sum of the first N terms of a geometric sequence with common ratio $$ r $$.
+
+</Definition>
+
+### Working with unequal cash flows
+
+While equal cash flows may happen under certain circumstances (for example, if you determine that you will save a fixed amount from your monthly income and deposit it in an investment), it is much more common to come across unequal cash flows.
+
+The mechanism for working with unequal cash flows is very similar to that of working with equal cash flows: finding the future value of a series of cash flows requires not more than finding the exact future value of each cash flow and adding them. Unfortunately, due to the fact that we have different periodic cash flows, we cannot reduce the process to a closed-form equation such as the one from ordinary annuities.
 
 <CodeHighlighter
   code={`
