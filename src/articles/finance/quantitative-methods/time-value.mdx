@@ -35,6 +35,7 @@ We can generalize the concept of interest rate to represent the rate at which th
 
 <Definition title="Definition 1: Interest rate between two periods">
 
+
 The interest rate between two periods $$ t $$ and $$ t + 1 $$ is given by:
 
 $$
@@ -42,6 +43,7 @@ r_{t, t+1} = \dfrac{Y_{t+1} - Y_t}{Y_t}
 $$
 
 </Definition>
+
 
 Where $ r_{t, t+1} $ represents the interest rate between periods $ t $ and $ t+1 $, $ Y_{t+1} $ represents the sum received at time $ t+1 $, and $ Y_t $ represents the sum paid in time $ t $.
 
@@ -97,15 +99,18 @@ For us to figure out the actual rate we have to use and how many times we should
 
 <Definition title="Test definition">
 
+
 $$
 FV_{N=n} = Y \left( 1 + \dfrac{r_s}{m} \right) ^{mn}
 $$
 
 </Definition>
 
+
 If we consider an example where an initial amount of $$ Y = \$ 1.000,00 $$ is invested in a paper that offers $$ 10 \% $$ as the stated annual interest rate compounded monthly and a time to maturity of $$ 1 $$ year, we obtain:
 
 <Example title="Test example">
+
 
 $$
 FV_{N=1} = \$ 1.000{,}00 \left( 1 + \dfrac{0.1}{12} \right) ^{12} \newline
@@ -114,6 +119,7 @@ FV_{N=1} = \$ 1.104{,}71
 $$
 
 </Example>
+
 
 As it can be seen, the effective annual interest rate is slightly higher than the stated annual rate. This happens due to the compounding effect of interest rates, and it is important to highlight that there is nothing wrong with our calculations. We are **not** converting from annual to monthly rates when we divide the stated annual interest rate by $$ 12 $$. The stated annual rate is a symbolic value that is stated in paper, but in reality it should be converted into the effective interest rate by adjusting it to the frequency of compounding.
 
@@ -137,12 +143,14 @@ Coming back to our previous example, if we were to consider the same investment 
 
 <Example title="Test example">
 
+
 $$
 FV_{N=1} = \$ 1.000{,}00 e^{0.1} \newline
 FV_{N=1} = \$ 1.105{,}17
 $$
 
 </Example>
+
 
 The final sum of continuous compounding is slightly higher than the sum of discrete compounding. In fact, it can be shown that, everything else being equal, continuous compounding offers an upper limit to the return of an investment for a given time period and stated interest rate.
 
@@ -151,6 +159,7 @@ The final sum of continuous compounding is slightly higher than the sum of discr
 We are now able to determine the future value of a single cash flow, and this can be easily extended for a series of cash flows. Suppose that we decide to invest $$ \$ 1.000,00 $$ every month in an application that pays an interest rate of $$ 1\% $$ per month at the end of each month. How much would we have at the end of $$ 12 $$ months?
 
 <Example title="Example XX: Compounding over 12 months" alignEquationsLeft={true}>
+
 
 To state the problem more formally, let's define each of the variables of our formula. Remember, we are interested in calculating how much money we will have at the end of a $$ 12 $$-month investment with monthly contributions of $$ \$ 1.000,00 $$.
 
@@ -187,11 +196,13 @@ In the end of 12 months, we will have accumulated a total of $$ \$ 21.384{,}28 $
 
 </Example>
 
+
 ### Ordinary annuities
 
 The short example above shows how compound interest can lead to substantial increases on our wealth if we invest our money early. The example also served to illustrate the basic concept behind **ordinary annuities**.
 
 <Definition title="Definition XX: Ordinary annuity">
+
 
 An ordinary annuity is a series of equal cash flows $$ A $$, which are incurred over equally spaced time intervals amounting to a total of $$ N $$ periods. The future value of an annuity is given by:
 
@@ -202,6 +213,7 @@ $$
 Which corresponds to the sum of the first N terms of a geometric sequence with common ratio $$ r $$.
 
 </Definition>
+
 
 ### Working with unequal cash flows
 
