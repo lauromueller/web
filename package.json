@@ -19,8 +19,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@mdx-js/mdx": "1.6.18",
-    "@mdx-js/react": "1.6.18",
+    "@mdx-js/mdx": "1.6.19",
+    "@mdx-js/react": "1.6.19",
     "gatsby": "2.24.83",
     "gatsby-plugin-mdx": "1.2.49",
     "gatsby-plugin-react-svg": "3.0.0",
