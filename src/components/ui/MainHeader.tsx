@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import FeaturedImage from '../../assets/images/featuredImage2.png';
+import LogoHeader from '../../assets/images/logo-header-cold.inline.svg';
 import { TopMainMenu } from './miscellaneous';
 
 const StyledLink = styled(props => <Link {...props} />)`
@@ -27,21 +27,11 @@ const StyledHeader = styled.div`
   }
 `;
 
-const StyledImage = styled.img`
-  width: 48px;
-  height: 48px;
-
-  @media (max-width: 576px) {
-    width: 36px;
-    height: 36px;
-  }
-`;
-
 const MainHeader: FunctionComponent = props => {
   return (
     <StyledHeader {...props}>
       <StyledLink to="/">
-        <StyledImage src={FeaturedImage} />
+        <LogoHeader width={48} height={48} />
       </StyledLink>
       <TopMainMenu />
     </StyledHeader>

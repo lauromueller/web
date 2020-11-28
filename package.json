@@ -40,6 +40,7 @@
     "prism-react-renderer": "1.1.1",
     "prismjs": "1.22.0",
     "react": "16.14.0",
+    "react-bootstrap-icons": "^1.1.0",
     "react-dom": "16.14.0",
     "react-resize-detector": "5.0.7",
     "remark-slug": "6.0.0",

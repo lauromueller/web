@@ -14866,6 +14866,13 @@ rc@^1.2.7, rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-bootstrap-icons@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-icons/-/react-bootstrap-icons-1.1.0.tgz#1762060dd51439b810074966eb1c62aced897d15"
+  integrity sha512-VDqoeXm/wCXfPuStJfsOztqYpZ3WdjaUaWZk6z78bjNc0JwQCme4nxuML+ISn151Vm6RAZKs2U4c/IbMhuJzpQ==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-dev-utils@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-4.2.3.tgz#5b42d9ea58d5e9e017a2f57a40a8af408a3a46fb"
