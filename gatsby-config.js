@@ -10,7 +10,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    siteName: `Lauro Müller`,
+    siteName: `Lauro F. Müller`,
     exampleUrl: `https://github.com/gatsbyjs/gatsby/tree/master/examples/using-typescript`,
   },
   plugins: [
@@ -45,6 +45,9 @@ module.exports = {
       },
     },
     `gatsby-plugin-sass`,
+    // TODO: reactive when reintroducing articles
+    /*
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -59,6 +62,8 @@ module.exports = {
         path: `${__dirname}/src/glossary`,
       },
     },
+
+    */
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {

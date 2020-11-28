@@ -89,6 +89,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const posts = articles.data.allMdx.edges;
   const terms = glossary.data.allMdx.edges;
 
+  // TODO comment: reimplement later the process for generating the article pages
+  /*
+
   // you'll call `createPage` for each result
   posts.forEach(({ node }, index) => {
     const { area, field, slug } = node.frontmatter;
@@ -115,4 +118,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: { slug },
     });
   });
+
+  */
 };

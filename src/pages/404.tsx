@@ -1,10 +1,9 @@
-import React from 'react';
 import { navigate } from 'gatsby';
 
-export default function NotFound() {
+const NotFound = (): Promise<void> | void => {
   if (typeof window !== 'undefined') {
     navigate('/');
   }
+};
 
-  return null;
-}
+export default NotFound;

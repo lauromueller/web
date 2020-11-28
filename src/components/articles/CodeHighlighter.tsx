@@ -1,4 +1,10 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
+import React, {
+  FunctionComponent,
+  ReactElement,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import styled from 'styled-components';
 import { CopyCodeButton } from '../ui/buttons';
@@ -37,8 +43,6 @@ const StyledPre = styled.pre`
   position: relative;
 `;
 
-const StyledPreInline = styled.pre``;
-
 const InvisibleTextArea = styled.textarea`
   width: 0;
   height: 0;
@@ -75,15 +79,17 @@ const CodeHighlighter: FunctionComponent<CodeHighlighterProps> = ({
         code={code}
         language={language || 'jsx'}
       >
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        {({ className, style, tokens, getTokenProps }): ReactElement => (
           <code className={className} style={style}>
-            {tokens.map((line, i) => (
-              <React.Fragment key={line.toString()}>
-                {line.map((token, key) => (
-                  <span {...getTokenProps({ token, key })} />
-                ))}
-              </React.Fragment>
-            ))}
+            {tokens.map(
+              (line): ReactElement => (
+                <React.Fragment key={line.toString()}>
+                  {line.map((token, key) => (
+                    <span {...getTokenProps({ token, key })} />
+                  ))}
+                </React.Fragment>
+              )
+            )}
           </code>
         )}
       </Highlight>
@@ -97,7 +103,13 @@ const CodeHighlighter: FunctionComponent<CodeHighlighterProps> = ({
       code={code}
       language={language || 'jsx'}
     >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+      {({
+        className,
+        style,
+        tokens,
+        getLineProps,
+        getTokenProps,
+      }): ReactElement => (
         <StyledPre className={className} style={style}>
           <StyledMetadataContainer>
             <StyledLanguageName>
@@ -105,7 +117,7 @@ const CodeHighlighter: FunctionComponent<CodeHighlighterProps> = ({
             </StyledLanguageName>
             <ButtonTextareaContainer>
               <CopyCodeButton
-                onClick={e => {
+                onClick={(): void => {
                   if (inputRef.current) {
                     inputRef.current.select();
                     document.execCommand('copy');
@@ -119,13 +131,15 @@ const CodeHighlighter: FunctionComponent<CodeHighlighterProps> = ({
             </ButtonTextareaContainer>
           </StyledMetadataContainer>
           <div className="code-container">
-            {tokens.map((line, i) => (
-              <div {...getLineProps({ line, key: i })}>
-                {line.map((token, key) => (
-                  <span {...getTokenProps({ token, key })} />
-                ))}
-              </div>
-            ))}
+            {tokens.map(
+              (line, i): ReactElement => (
+                <div {...getLineProps({ line, key: i })}>
+                  {line.map((token, key) => (
+                    <span {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
+              )
+            )}
           </div>
         </StyledPre>
       )}

@@ -3,8 +3,10 @@ export type ParseArticleUrlParams = {
   slug: string;
 };
 
-export const parseArticleUrl = ({ filePath, slug }: ParseArticleUrlParams) => {
+export const parseArticleUrl = ({
+  filePath,
+  slug,
+}: ParseArticleUrlParams): string => {
   const split = filePath.split(/.*(?:src).*/);
-  console.log(split);
   return `${split[split.length - 1]}/${slug}`;
 };

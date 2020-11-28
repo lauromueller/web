@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import FeaturedImage from '../../../assets/images/featured-image.png';
+import FeaturedImage from '../../../assets/images/profile-picture.jpg';
 
 const StyledWrapper = styled.div`
   margin: 28px 0;
@@ -41,7 +41,7 @@ const StyledH6 = styled.h6`
   color: #666666;
 `;
 
-const AuthorIntroduction = () => {
+const AuthorIntroduction: FunctionComponent = () => {
   return (
     <StyledWrapper>
       <StyledImage src={FeaturedImage} />
