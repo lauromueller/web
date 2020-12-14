@@ -45,7 +45,7 @@
     "react-tooltip": "4.2.11",
     "remark-slug": "6.0.0",
     "styled-components": "5.2.1",
-    "swiper": "5.4.5",
+    "swiper": "6.4.1",
     "typescript": "3.9.7"
   },
   "devDependencies": {
